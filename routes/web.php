@@ -51,4 +51,5 @@ Route::group(['middleware' => ['verified','teacher','auth']], function () {
 // admin permission
 Route::group(['middleware' => ['verified','admin','auth']], function () {
     Route::get('/admin/index','adminController@index')->name('adminPage');
+    Route::get('/admin/payment/{id}/{c_id}','adminController@payment')->name('payment');
 });

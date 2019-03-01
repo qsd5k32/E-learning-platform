@@ -7,6 +7,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Detail;
+use App\Enrolment;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -22,6 +23,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function detail()
     {
        return $this->hasOne(Detail::class,'user_id');
+    }
+
+    public function enrolments()
+    {
+        return $this->hasMany(Enrolment::class,'student_id');
     }
     protected $fillable = [
         'name', 'username' , 'email', 'password', 'level'
