@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container pt-5">
     <div class="card mt-5 mb-5">
         <div class="card-body">
             @if (session('resent'))

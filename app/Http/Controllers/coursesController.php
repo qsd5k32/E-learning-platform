@@ -30,7 +30,7 @@ class coursesController extends Controller
             'course_id' => $id
         ])->value('payment');
 
-        if($payment != 1 ) return abort(403,'you need to pay to show this content ' . $id);
+        if($payment != 1 ) return abort(403,'you need to pay to show this content ');
 
         $course = Course::where('course_id',$id)->first();
         $playlist = playlist::where('course_id',$id)->get();
@@ -40,9 +40,10 @@ class coursesController extends Controller
         ]);
     }
 
-    public function viewCourse($course_id,$id)
+    public function viewCourse($id)
     {
-
+        if(playlist::where('id',$id)->count() == 0) abort(404);
+        return view('student.viewContent',['url' => $id]);
     }
 
     // view more info about course

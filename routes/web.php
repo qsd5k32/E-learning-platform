@@ -13,6 +13,7 @@
 // welcome page
 Route::get('/', function () { return view('welcome'); })->middleware('guest');
 
+
 // Auth pages
 Auth::routes(['verify' => true]);
 Route::get('logout', 'Auth\LoginController@logout');
@@ -20,6 +21,7 @@ Route::get('logout', 'Auth\LoginController@logout');
 // course information
 Route::get('/course/info/{id}','coursesController@moreInfo')->name('courseInfo');
 // courses list
+Route::get('/courses', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
 //routes need auth and verified permissions
@@ -27,12 +29,15 @@ Route::group(['middleware' => ['verified','auth']], function () {
     // save Account details
     Route::get('/account/details','accountController@index');
     Route::post('/account/details','accountController@setData');
+    Route::get('/account/setting','settingController@index');
+    Route::post('/account/setting','settingController@setData');
     // enroll to course
     Route::get('/enroll/{course_id}','enrollController@enroll')->name('enroll');
     // playlist
     Route::get('/course/playlist/{id}','coursesController@viewPlaylist')->name('playlist');
     Route::get('/myCourses','enrollController@myCourses')->name('myCourses');
-    Route::get('/course/playlist/view/{id}','coursesController@viewPlaylist')->name('view');
+    Route::get('/course/playlist/view/{id}','coursesController@viewCourse')->name('view');
+    Route::get('/video/{id}', 'videoController@url')->name('video');
 });
 
 // teacher permission

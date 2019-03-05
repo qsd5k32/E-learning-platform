@@ -35,7 +35,7 @@
                         Courses list
                     </a>
                 @foreach($playlist as $course)
-                        <a href="" class="list-group-item list-group-item-action">{{ $course->course_name }}</a>
+                        <a href="{{ route('view',['id' => $course->id]) }}" class="list-group-item list-group-item-action">{{ $course->course_name }}</a>
                 @endforeach
                     </div>
             </div>

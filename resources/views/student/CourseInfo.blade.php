@@ -1,12 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container pl-5 pr-5 pb-5">
-        <div class="card card-cascade wider reverse">
+    <div class="container">
+        <section>
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-12">
+        <div class="card card-cascade wider reverse border-0">
             <div class="view view-cascade overlay">
-                <img src="{{ asset('uploads/') .'/'.$course->cover_url }}" alt="{{ $course->name }}" class="card-img-top">
+                <img src="{{ asset('uploads/') .'/'.$course->cover_url }}" height="400" alt="{{ $course->name }}" class="card-img-top">
                 <a>
-                    <div class=""></div>
+                    <div class="mask rgba-white-slight"></div>
                 </a>
             </div>
 
@@ -44,14 +51,17 @@
                 <!--Social shares-->
 
             </div>
+        </div>
+                </div>
+            </div>
+        </section>
             <!--Post data-->
         </div>
 
-    </div>
     <div class="row p-5">
         <!-- Card Wider -->
         <div class="col-lg-4 col-xl-4 col-md-12 col-12">
-            <div class="card card-cascade wider">
+            <div class="card card-cascade wider border-0">
 
                 <!-- Card image -->
                 <div class="view view-cascade overlay">

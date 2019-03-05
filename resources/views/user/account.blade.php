@@ -51,8 +51,7 @@
             </div>
             <div class="md-form">
                 <i class="fas fa-pencil-alt prefix"></i>
-                <textarea type="text" name="resume" id="form10" class="md-textarea form-control" rows="3">
-                    @if(!empty($details->resume)){{ $details->resume }}@endif
+                <textarea type="text" name="resume" id="form10" class="md-textarea form-control" rows="3">@if(!empty($details->resume)){{ $details->resume }}@endif
                 </textarea>
                 <label for="form10">Resume</label>
             </div>

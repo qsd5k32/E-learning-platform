@@ -1,26 +1,70 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
    <head>
+
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       <meta name="csrf-token" content="{{ csrf_token() }}">
+       <meta name="Description" content="E learning platform">
       <!-- CSRF Token -->
       <title>{{ config('app.name', 'Laravel') }}</title>
       <!-- Scripts -->
       <script src="{{ asset('js/app.js') }}" defer></script>
       <!-- Fonts -->
       <!-- Styles -->
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/mdb.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/compiled-4.7.1.min.css') }}">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+       <style type="text/css">
+           html,
+           body,
+           header,
+           .view {
+               height: 100%;
+           }
+
+           @media (max-width: 740px) {
+               html,
+               body,
+               header,
+               .view {
+                   height: 1000px;
+               }
+               .navbar {
+                   background-color: #1C2331;
+               }
+               .navbar:not(.top-nav-collapse) {
+                   background: #1C2331!important;
+               }
+           }
+
+           @media (min-width: 800px) and (max-width: 850px) {
+               html,
+               body,
+               header,
+               .view {
+                   height: 650px;
+               }
+           }
+           @media (min-width: 800px) and (max-width: 850px) {
+               .navbar {
+                   background-color: #1C2331;
+               }
+               .navbar:not(.top-nav-collapse) {
+                   background: #1C2331!important;
+               }
+           }
+           .navbar {
+               background-color: #1C2331;
+           }
+
+       </style>
        @yield('links')
    </head>
    <body>
-      <div id="app">
-      <!--Navbar -->
-
-      <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
       <a class="navbar-brand" href="{{ url('/') }}">
       {{ config('app.name', 'Laravel') }}
       </a>
@@ -97,9 +141,9 @@
               @endif
           @endguest
 
-         <main>
+
             @yield('content')
-         </main>
+
 
       <!-- Footer -->
 <footer class="page-footer font-small unique-color-dark">
@@ -242,17 +286,7 @@
     <!-- Copyright -->
 
   </footer>
-  <!-- Footer -->
-      </div>
-      <script type="text/javascript" src="{{ url('/') }}/js/jquery-3.3.1.min.js"></script>
-      <script type="text/javascript" src="{{ url('/') }}/js/popper.min.js"></script>
-      <script type="text/javascript" src="{{ url('/') }}/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="{{ url('/') }}/js/mdb.js"></script>
-
-
-      <script type="text/javascript">
-         new WOW().init();
-      </script>
+      <script type="text/javascript" defer src="{{ url('/') }}/js/mdb.min.js"></script>
       @yield('scripts')
    </body>
 </html>
