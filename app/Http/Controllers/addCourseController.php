@@ -54,8 +54,6 @@ class addCourseController extends Controller
 		// video information
 		$this->name = request()->route('id');
 		$this->title = $request->input('courseTitle');
-		$this->path = $request->file('coursePath')->getRealPath();
-		
 		
 	}
 
@@ -65,23 +63,17 @@ class addCourseController extends Controller
        $this->checkId($id);
    		$this->privacy = 'unlisted';
 		$this->validateCourseData($request);
-		$video = Youtube::upload($this->path, [
-    		'title'       => $this->title,
-    		'category_id' => 10
-			], $this->privacy);
-		$videoId = $video->getVideoId();
+    $file = $request->file('coursePath');
+		$video = 
 
-		if($video)
-		{
-			Playlist::insert([
-				'course_id' => $this->name,
-				'course_name' => $this->title,
-				'course_url' => $videoId,
+		Playlist::insert([
+        'course_id' => $this->name,
+        'course_name' => $this->title,
+        'course_url' => $videoId,
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
-			]);
-			return view('message.uploadSuccess',['videoId' => $videoId]);
-		}
+      ]);
+      return view('message.uploadSuccess',['videoId' => $videoId]);
 		return view('message.errorUpload');
 	}
 }

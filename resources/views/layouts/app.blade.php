@@ -124,7 +124,7 @@
           @guest
           @else
               @if(Auth::user()->level == 2)
-                  <div class="classic-tabs rounded-0">
+                  <div class="classic-tabs fixed-top mt-5 rounded-0">
                       <ul class="nav tabs-cyan" id="myClassicTabShadow" role="tablist">
                           <li class="nav-item">
                               <a class="nav-link  waves-light show" id="profile-tab-classic-shadow" href="{{ route('createCourse') }}"
