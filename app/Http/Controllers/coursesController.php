@@ -52,8 +52,8 @@ class coursesController extends Controller
         $this->checkStatus($id);
         $course = Course::where('course_id',$id)->first();
         $author = Course::where('author_id',$course->author_id)
-            ->join('users','author_id','=','users.id')
-            ->join('details','author_id','=','details.user_id')->first();
+            ->join('users','users.id','=','author_id')
+            ->join('details','details.user_id','=','author_id')->first();
         $enrollment = Enrolment::where([
             'student_id' => Auth::id(),
             'course_id' => $id

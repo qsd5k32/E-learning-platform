@@ -65,7 +65,7 @@
 
                 <!-- Card image -->
                 <div class="view view-cascade overlay">
-                    <img  class="card-img-top" src="@if(!empty(Auth::user()->detail->photo)) {{ asset('uploads') . '/' . Auth::user()->detail->photo }} @else {{ asset('uploads/profile.svg') }} @endif" alt="Card image cap">
+                    <img  class="card-img-top" src="@if(!empty($author->photo)) {{ asset('uploads') . '/' . $author->photo }} @else {{ asset('uploads/profile.svg') }} @endif" alt="Card image cap">
                 </div>
 
                 <!-- Card content -->
