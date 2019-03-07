@@ -40,10 +40,10 @@ class coursesController extends Controller
         ]);
     }
 
-    public function viewCourse($id)
+    public function viewCourse($id,$course_id)
     {
-        if(playlist::where('id',$id)->count() == 0) abort(404);
-        return view('student.viewContent',['url' => $id]);
+        if(playlist::where('id',$course_id)->count() == 0) abort(404);
+        return view('student.viewContent',['url' => $id ,'course_id' => $course_id]);
     }
 
     // view more info about course

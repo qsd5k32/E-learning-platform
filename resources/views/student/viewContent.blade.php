@@ -1,18 +1,31 @@
 @extends('layouts.app')
-
+<!-- @TODO change player -->
 @section('content')
-    <video autoplay id='my-video' class='video-js w-100 h-100' controls preload='auto'>
-        <source src='{{ route('video',['id' => $url]) }}' type='video/mp4'>
-        <p>
-            To view this video please enable JavaScript, and consider upgrading to a web browser that
-            <a href='https://videojs.com/html5-video-support/' target='_blank'>supports HTML5 video</a>
-        </p>
-    </video>
+    <div class="unique-color-dark">
+        <div class="container p-5">
+            <video autoplay id="player" controls style="max-height: 100% !important;">
+                <source src="{{ route('video',['course_id' => $course_id ,'id' => $url]) }}" type="video/mp4" />
+            </video>
+        </div>
+    </div>
 @endsection
 @section('links')
     <style>
         nav {
             display: none !important;
         }
+        .nav {
+            display: none !important;
+        }
     </style>
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.5.2/plyr.css" />
+
+@endsection
+@section('scripts')
+    <script src="https://cdn.plyr.io/3.5.2/plyr.js"></script>
+    <script>
+        const player = new Plyr('#player',{
+            settings : ['captions', 'quality', 'speed', 'loop']
+        });
+    </script>
 @endsection

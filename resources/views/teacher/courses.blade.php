@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.teach')
 
 @section('content')
     <div class="container pt-5">
@@ -22,9 +22,9 @@
                                 @endif
                                 <h3 class="card-title pt-2"><strong>{{ $course->name}}</strong></h3>
                                 <p>{{ substr($course->description,0,90) . ' ...' }}</p>
-                                <div class="row">
-                                    <a class="btn btn-primary" href="{{ route('editCourse',['id' => $course->course_id]) }}"><i class="fas fa-book-open left"></i> Edit Course</a>
-                                    <a class="btn btn-primary" href="{{ route('addContent',['id' => $course->course_id]) }}"><i class="fas fa-book-open left"></i> Add content</a>
+                                <div class="d-flex justify-content-center">
+                                    <a class="btn btn-primary" href="{{ route('editCourse',['id' => $course->course_id]) }}">Edit</a>
+                                    <a class="btn btn-primary" href="{{ route('addContent',['id' => $course->course_id]) }}">Add </a>
                                 </div>
                             </div>
                         </div>

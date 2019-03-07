@@ -12,6 +12,7 @@
 */
 // welcome page
 Route::get('/', function () { return view('welcome'); })->middleware('guest');
+Route::get('/test', function () { return view('test'); });
 
 
 // Auth pages
@@ -36,8 +37,8 @@ Route::group(['middleware' => ['verified','auth']], function () {
     // playlist
     Route::get('/course/playlist/{id}','coursesController@viewPlaylist')->name('playlist');
     Route::get('/myCourses','enrollController@myCourses')->name('myCourses');
-    Route::get('/course/playlist/view/{id}','coursesController@viewCourse')->name('view');
-    Route::get('/video/{id}', 'videoController@url')->name('video');
+    Route::get('/course/playlist/view/{course_id}/{id}','coursesController@viewCourse')->name('view');
+    Route::get('/video/{id}/{course_id}', 'videoController@url')->name('video');
 });
 
 // teacher permission
@@ -48,9 +49,9 @@ Route::group(['middleware' => ['verified','teacher','auth']], function () {
     // course edit or add
     Route::get('/teacher/courses/','addCourseController@index')->name('coursesTeacher');
     Route::get('/course/add/{id}','addCourseController@addContent')->name('addContent');
-    Route::post('/course/add/{id}','addCourseController@addContent')->name('addContent');
+    Route::post('/course/add/{id}','addCourseController@setContent')->name('setContent');
     Route::get('/course/edit/{id}','createCourseController@updateCourse')->name('editCourse');
-    Route::post('/course/edit/{id}','createCourseController@update')->name('editCourse');
+    Route::post('/course/edit/{id}','createCourseController@update');
 });
 
 // admin permission

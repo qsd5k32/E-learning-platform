@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.teach')
 
 @section('content')
     <div class="container p-5">
@@ -11,7 +11,7 @@
                 <label for="materialLoginFormEmail">Course title</label>
             </div>
             <!-- Password -->
-            <div class="md-form">
+            <div class="md-form mt-2 mb-2">
                 <textarea type="text" name="courseDescription" id="editor" class="md-textarea form-control" rows="3">{{ $course->description }}</textarea>
                 <label for="editor">Course description</label>
             </div>
@@ -49,4 +49,17 @@
             </div>
         @endif
     </div>
+@endsection
+@section('links')
+
+@endsection
+@section('scripts')
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

@@ -18,6 +18,7 @@ class CreatePlaylistsTable extends Migration
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->string('course_name');
+            $table->string('type')->comment('documents or video or article');
             $table->string('course_url');
             $table->softDeletes();
             $table->timestamps();        });

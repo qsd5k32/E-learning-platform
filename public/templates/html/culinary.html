@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Material Design Bootstrap</title>
+  <!-- Font Awesome -->
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="../css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="../css/style.css" rel="stylesheet">
+  <style>
+    html,
+    body,
+    header,
+    .jarallax {
+      height: 100%;
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+        .navbar:not(.top-nav-collapse) {
+            background: #7d8488!important;
+        }
+        .navbar {
+          box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12) !important;
+        }
+    }
+
+    .blockquote.b-reverse {
+      padding-right: 1rem;
+      padding-left: 0;
+      text-align: right;
+      border-right: .25rem solid #eceeef;
+      border-left: 0;
+    }
+  </style>
+</head>
+
+<body class="culinary">
+  <!--Navigation & Intro-->
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto smooth-scroll">
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about" data-offset="100">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#specials" data-offset="100">Specials</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery" data-offset="60">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#visit" data-offset="40">Visit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact" data-offset="100">Contact</a>
+            </li>
+          </ul>
+          <!-- Social Icon  -->
+          <ul class="navbar-nav nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link"><i class="fab fa-facebook-f light-green-text-2"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"><i class="fab fa-twitter light-green-text-2"></i></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"><i class="fab fa-instagram light-green-text-2"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Intro Section -->
+    <div id="home" class="view jarallax" data-jarallax='{"speed": 0.2}' style="background-image: url('https://mdbootstrap.com/img/Photos/Others/food2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+      <div class="mask h-100 d-flex justify-content-center align-items-center rgba-black-light">
+        <div class="container">
+          <blockquote class="blockquote b-reverse smooth-scroll">
+            <div class="white-text text-right mr-3 wow fadeInUp">
+              <h1 class="display-3 font-weight-bold mb-2">John Doe</h1>
+              <h3 class="mb-4">American Masterchef Winner</h3>
+              <a href="#about" data-offset="100" class="btn btn-large btn-outline-white">Learn more</a>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!--/Navigation & Intro-->
+  <!--Main layout-->
+  <main>
+    <!-- First container -->
+    <div class="container">
+      <!-- Section About -->
+      <section id="about" class="section mt-5 mb-5">
+        <!-- Section title -->
+        <h2 class="section-heading text-center mb-5 text-center mb-5 text-uppercase font-weight-bold pt-5 wow fadeIn" data-wow-delay="0.2s">About me</h2>
+        <!-- First row -->
+        <div class="row wow fadeIn" data-wow-delay="0.2s">
+          <!-- Place for photo -->
+          <div class="col-lg-4 mb-2">
+            <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/4-col/img%20%28124%29.jpg" alt="My photo" class="img-fluid z-depth-1">
+          </div>
+          <!-- Text content -->
+          <div class="col-lg-7 ml-2 mb-5">
+            <h5 class="font-weight-bold mb-4">Hi, I'm Jonathan Doe. American Masterchef Winner</h5>
+            <p align="justify"><span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo animi soluta ratione quisquam, dicta ab cupiditate iure eaque? Repellendus voluptatum, magni impedit eaque delectus, beatae maxime temporibus maiores quibusdam quasi.</span><span>Rem magnam ad perferendis iusto sint tempora ea voluptatibus iure, animi excepturi modi aut possimus in hic molestias repellendus illo ullam odit quia velit. Qui expedita sit quo, maxime molestiae.</span></p>
+            <p align="justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi sapiente, consequuntur dolore praesentium non suscipit minus repudiandae, nesciunt placeat, vel nostrum.</p>
+          </div>
+        </div>
+        <!-- /.First row -->
+      </section>
+      <!-- /.Section About -->
+    </div>
+    <!-- /.First container -->
+    <!--streak-->
+    <div class="streak streak-photo streak-md" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/food3.jpg');">
+      <div class="flex-center mask rgba-indigo-light">
+        <div class="text-center white-text">
+          <h2 class="h2-responsive mb-5"><i class="fas fa-quote-left" aria-hidden="true"></i> Food for the body is not enough. There must be food for the soul. <i class="fas fa-quote-right" aria-hidden="true"></i></h2>
+          <h5 class="text-center font-italic">~ Dorothy Day</h5>
+        </div>
+      </div>
+    </div>
+    <!--streak-->
+    <!-- Second container -->
+    <div class="container">
+      <!-- Section About -->
+      <section id="specials" class="section feature-box text-center mt-5 mb-5">
+        <!-- Section title -->
+        <h2 class="section-heading text-center mb-5 text-uppercase font-weight-bold wow fadeIn" data-wow-delay="0.2s">Specials</h2>
+        <p class="text-center w-responsive mx-auto my-5 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum quas, eos officia maiores ipsam ipsum dolores reiciendis ad voluptas, animi obcaecati adipisci sapiente mollitia.</p>
+        <!-- First row -->
+        <div class="row  wow fadeIn" data-wow-delay="0.4s">
+          <!-- First column -->
+          <div class="col-md-3 mb-5">
+            <!--Panel-->
+            <div class="card card-body  blue lighten-3 hoverable">
+              <i class="fas fa-utensils fa-3x mb-4 mt-3 white-text" aria-hidden="true"></i>
+              <h5 class="feature-title font-weight-bold white-text text-uppercase">Lunches</h5>
+            </div>
+            <!--/.Panel-->
+          </div>
+          <!-- /First column -->
+          <!-- Second column -->
+          <div class="col-md-3 mb-5">
+            <!--Panel-->
+            <div class="card card-body pink lighten-3 hoverable">
+              <i class="fas fa-glass-martini fa-3x mb-4 mt-3 white-text" aria-hidden="true"></i>
+              <h5 class="feature-title white-text text-uppercase">Drinks</h5>
+            </div>
+            <!--/.Panel-->
+          </div>
+          <!-- /.Second column -->
+          <!-- Third column -->
+          <div class="col-md-3 mb-5">
+            <!--Panel-->
+            <div class="card card-body indigo lighten-3 hoverable">
+              <i class="fas fa-birthday-cake fa-3x mb-4 mt-3 white-text" aria-hidden="true"></i>
+              <h5 class="feature-title white-text text-uppercase">Cakes</h5>
+            </div>
+            <!--/.Panel-->
+          </div>
+          <!-- /.Third column -->
+          <!-- Third column -->
+          <div class="col-md-3 mb-5">
+            <!--Panel-->
+            <div class="card card-body deep-orange lighten-3 hoverable">
+              <i class="fas fa-coffee fa-3x mb-4 mt-3 white-text" aria-hidden="true"></i>
+              <h5 class="feature-title white-text text-uppercase">Coffee</h5>
+            </div>
+            <!--/.Panel-->
+          </div>
+          <!-- /.Third column -->
+        </div>
+        <!-- /.First row -->
+      </section>
+      <!-- /.Second section -->
+    </div>
+    <!-- /.Second container -->
+    <!-- Third container -->
+    <div class="container-fluid" style="background-color: #fff4fd;">
+      <div class="container">
+        <!-- Third section -->
+        <section id="blog" class="section extra-margins text-center mt-4 pb-5 pt-1 mb-5">
+          <!-- Section title -->
+          <h2 class="section-heading text-center mb-5 text-uppercase font-weight-bold pt-5 mt-5 wow fadeIn" data-wow-delay="0.2s">My recipes</h2>
+          <!-- Section description -->
+          <p class="text-center w-responsive mx-auto wow fadeIn my-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste provident, voluptatum voluptatibus aut modi aspernatur autem impedit, eius, debitis earum voluptatem. Quaerat hic aspernatur laborum.</p>
+          <!-- First row -->
+          <div class="row mb-3 wow fadeIn" data-wow-delay="0.4s">
+            <!--First column-->
+            <div class="col-lg-4 col-md-12 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="red-text"><i class="fas fa-utensils"></i> Lunches</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/First column-->
+            <!--Second column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="pink-text"><i class="fas fa-birthday-cake"></i> Dessert</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/Second column-->
+            <!--Third column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="cyan-text"><i class="fas fa-glass-martini"></i> Drink</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/Third column-->
+          </div>
+          <!-- /.First row -->
+        </section>
+        <!-- /.Third section -->
+      </div>
+    </div>
+    <!-- /.Third container -->
+    <!-- Fourth container -->
+    <div class="container">
+      <!-- Third section -->
+      <section id="gallery" class="section mb-5">
+        <!-- Section title -->
+        <h2 class="section-heading text-center mb-5 text-uppercase pt-5 font-weight-bold wow fadeIn" data-wow-delay="0.2s">Gallery</h2>
+        <!-- Section description -->
+        <p class="text-center w-responsive mx-auto wow fadeIn my-5" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia iste provident, voluptatum voluptatibus aut modi aspernatur autem impedit, eius, debitis earum voluptatem. Quaerat hic aspernatur laborum magni earum. At, officiis!</p>
+      </section>
+      <!-- /.Fourth section -->
+      <!-- First row -->
+      <div class="row wow fadeIn mb-5 pb-5" data-wow-delay="0.2s">
+        <!-- First column -->
+        <div class="col-md-12">
+          <!-- Lightbox -->
+          <div id="mdb-lightbox-ui"></div>
+          <div class="mdb-lightbox no-margin">
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(40).jpg" class="img-fluid">
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(147).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(150).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(148).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(146).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(146).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(145).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg" class="img-fluid" />
+							</a>
+            </figure>
+            <figure class="col-md-4">
+              <a href="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(41).jpg" data-size="1600x1067">
+								<img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(41).jpg" class="img-fluid" />
+                            </a>
+            </figure>
+          </div>
+          <!-- /.Lightbox -->
+        </div>
+        <!-- /.First column -->
+      </div>
+      <!-- /.First row -->
+    </div>
+    <div class="container-fluid" style="background-color: #f3f3f5;">
+      <div class="container">
+        <!--Section: Pricing v.1-->
+        <section id="visit" class="section pt-4 pb-5">
+          <h2 class="section-heading text-center mb-5 text-uppercase font-weight-bold pt-4 mt-5 wow fadeIn" data-wow-delay="0.2s">Visit us</h2>
+          <p class="text-center w-responsive mx-auto wow fadeIn my-5" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam illum voluptates et, aut ex, laudantium fugiat, eveniet sapiente, exercitationem dicta tempore quas! Eaque quae similique labore cumque enim.</p>
+          <!--First row-->
+          <div class="row wow fadeIn" data-wow-delay="0.4s">
+            <!--First column-->
+            <div class="col-lg-4 col-md-12 mb-5">
+              <!--Pricing card-->
+              <div class="card pricing-card">
+                <!--Price-->
+                <div class="price mb-1">
+                  <div class="version header grey-color">
+                    <h5 class="font-weight-bold">Breakfast</h5>
+                  </div>
+                </div>
+                <!--/.Price-->
+                <!--Features-->
+                <div class="card-body streakd">
+                  <ul class="list-unstyled">
+                    <li>
+                      <p><strong>Mon - Thu</strong>: 8am - 12am</p>
+                    </li>
+                    <li>
+                      <p><strong>Fri</strong>: 7am - 1pm</p>
+                    </li>
+                    <li>
+                      <p><strong>Sat</strong>: 7am - 3pm</p>
+                    </li>
+                    <li>
+                      <p><strong>Sun</strong>: All Day!</p>
+                    </li>
+                  </ul>
+                  <button class="btn btn-secondary">Book a table</button>
+                </div>
+                <!--/.Features-->
+              </div>
+              <!--/.Pricing card-->
+            </div>
+            <!--/First column-->
+            <!--Second column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Pricing card-->
+              <div class="card pricing-card">
+                <!--Price-->
+                <div class="price mb-1">
+                  <div class="version header grey-color">
+                    <h5 class="font-weight-bold">Lunch</h5>
+                  </div>
+                </div>
+                <!--/.Price-->
+                <!--Features-->
+                <div class="card-body streakd">
+                  <ul class="list-unstyled">
+                    <li>
+                      <p><strong>Mon - Thu</strong>: 11am - 3am</p>
+                    </li>
+                    <li>
+                      <p><strong>Fri</strong>: 11am - 5pm</p>
+                    </li>
+                    <li>
+                      <p><strong>Sat</strong>: 11am - 3pm</p>
+                    </li>
+                    <li>
+                      <p><strong>Sun</strong>: 11am - 5pm</p>
+                    </li>
+                  </ul>
+                  <button class="btn btn-secondary">Book a table</button>
+                </div>
+                <!--/.Features-->
+              </div>
+              <!--/.Pricing card-->
+            </div>
+            <!--/Second column-->
+            <!--Third column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Pricing card-->
+              <div class="card pricing-card mb-2">
+                <!--Price-->
+                <div class="price mb-1">
+                  <div class="version header grey-color">
+                    <h5 class="font-weight-bold">Dinner</h5>
+                  </div>
+                </div>
+                <!--/.Price-->
+                <!--Features-->
+                <div class="card-body streakd">
+                  <ul class="list-unstyled">
+                    <li>
+                      <p><strong>Mon - Thu</strong>: 3pm - 10om</p>
+                    </li>
+                    <li>
+                      <p><strong>Fri</strong>: 5pm - Last customer</p>
+                    </li>
+                    <li>
+                      <p><strong>Sat</strong>: 5pm - Last customer</p>
+                    </li>
+                    <li>
+                      <p><strong>Sun</strong>: 3pm - 10pm</p>
+                    </li>
+                  </ul>
+                  <button class="btn btn-secondary">Book a table</button>
+                </div>
+                <!--/.Features-->
+              </div>
+              <!--/.Pricing card-->
+            </div>
+            <!--/Third column-->
+          </div>
+          <!--/First row-->
+        </section>
+        <!--/Section: Pricing v.1-->
+      </div>
+    </div>
+    <!-- Another container -->
+    <div class="container">
+      <!-- Contact -->
+      <section id="contact" class="section mb-4">
+        <!--Section heading-->
+        <h2 class="section-heading text-center mb-5 text-uppercase font-weight-bold pt-5 mt-5 wow fadeIn" data-wow-delay="0.2s">Contact</h2>
+        <!--Section sescription-->
+        <p class="text-center w-responsive mx-auto mb-5 wow fadeIn" data-wow-delay="0.2s">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam. </p>
+        <div class="row wow fadeIn" data-wow-delay="0.4s">
+          <!--First column-->
+          <div class="col-md-8 mb-5 pb-3">
+            <form>
+              <!--First row-->
+              <div class="row">
+                <!--First column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form41" class="form-control">
+                      <label for="form41" class="">Your name</label>
+                    </div>
+                </div>
+                <!--Second column-->
+                <div class="col-md-6">
+                    <div class="md-form mb-0">
+                      <input type="text" id="form52" class="form-control">
+                      <label for="form52" class="">Your email</label>
+                    </div>
+                </div>
+              </div>
+              <!--/.First row-->
+              <!--Second row-->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="md-form mb-0">
+                    <input type="text" id="form51" class="form-control">
+                    <label for="form51" class="">Subject</label>
+                  </div>
+                </div>
+              </div>
+              <!--/Second row-->
+              <!--Third row-->
+              <div class="row">
+                <!--First column-->
+                <div class="col-md-12">
+                  <div class="md-form mb-0">
+                    <textarea type="text" id="form76" class="md-textarea form-control" rows="3"></textarea>
+                    <label for="form76">Your message</label>
+                  </div>
+                </div>
+              </div>
+              <!--/.Third row-->
+            </form>
+            <div class="text-center text-md-left mt-4">
+              <a class="btn btn-elegant">Send</a>
+            </div>
+          </div>
+          <!--.First column-->
+          <!--Second column-->
+          <div class="col-md-4">
+            <ul class="contact-icons list-unstyled text-center">
+              <li><i class="fas fa-map-marker-alt fa-2x"></i>
+                <p>New York, NY 10012, USA</p>
+              </li>
+              <li><i class="fas fa-phone fa-2x"></i>
+                <p>+ 01 234 567 89</p>
+              </li>
+              <li><i class="fas fa-envelope fa-2x"></i>
+                <p>contact@mdbootstrap.com</p>
+              </li>
+            </ul>
+          </div>
+          <!--.Second column-->
+        </div>
+      </section>
+      <!--/Section: Contact v.2-->
+    </div>
+    <!-- /.Another container -->
+    <!-- Streak -->
+    <div class="streak1" style="background-color: #f3f3f5;">
+      <div class="flex-center flex-wrap">
+        <!--Facebook-->
+        <a type="button" class="btn-floating btn-secondary"><i class="fab fa-facebook-f"></i></a>
+        <!--Twitter-->
+        <a type="button" class="btn-floating btn-secondary"><i class="fab fa-twitter"></i></a>
+        <!--Google +-->
+        <a type="button" class="btn-floating btn-secondary"><i class="fab fa-google-plus-g"></i></a>
+        <!--Youtube-->
+        <a type="button" class="btn-floating btn-secondary"><i class="fab  fa-youtube"></i></a>
+        <!--Instagram-->
+        <a type="button" class="btn-floating btn-secondary"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <!--/Streak-->
+  </main>
+  <!--/Main layout-->
+  <!-- Scrollspy -->
+  <div class="dotted-scrollspy clearfix d-none d-sm-block">
+    <ul class="nav smooth-scroll flex-column">
+      <li class="nav-item"><a class="nav-link" href="#home"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#about"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#specials"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#gallery"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#visit"><span></span></a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact"><span></span></a></li>
+    </ul>
+  </div>
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="../js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="../js/mdb.min.js"></script>
+  <script>
+  /* WOW.js init */
+  new WOW().init();
+
+  // initialize scrollspy
+  $('body').scrollspy({
+    target: '.dotted-scrollspy'
+  });
+
+  // initialize lightbox
+  $(function() {
+    $("#mdb-lightbox-ui").load("../mdb-addons/mdb-lightbox-ui.html");
+  });
+
+  $('.navbar-collapse a').click(function() {
+    $(".navbar-collapse").collapse('hide');
+  });
+  </script>
+</body>
+
+</html>

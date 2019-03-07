@@ -10,10 +10,10 @@
       <!-- CSRF Token -->
       <title>{{ config('app.name', 'Laravel') }}</title>
       <!-- Scripts -->
-      <script src="{{ asset('js/app.js') }}" defer></script>
       <!-- Fonts -->
       <!-- Styles -->
-      <link rel="stylesheet" type="text/css" href="{{ asset('css/compiled-4.7.1.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ asset('css/mdb.min.css') }}">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
@@ -120,32 +120,8 @@
          </ul>
       </div>
         </nav>
-
-          @guest
-          @else
-              @if(Auth::user()->level == 2)
-                  <div class="classic-tabs fixed-top mt-5 rounded-0">
-                      <ul class="nav tabs-cyan" id="myClassicTabShadow" role="tablist">
-                          <li class="nav-item">
-                              <a class="nav-link  waves-light show" id="profile-tab-classic-shadow" href="{{ route('createCourse') }}"
-                                 aria-controls="profile-classic-shadow" aria-selected="true">Create course</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link  waves-light show" id="profile-tab-classic-shadow" href="{{ route('coursesTeacher') }}"
-                                 aria-controls="profile-classic-shadow" aria-selected="true">My courses</a>
-                          </li>
-
-                      </ul>
-
-                  </div>
-              @endif
-          @endguest
-
-
             @yield('content')
 
-
-      <!-- Footer -->
 <footer class="page-footer font-small unique-color-dark">
 
     <div style="background-color: #6351ce;">
@@ -286,7 +262,10 @@
     <!-- Copyright -->
 
   </footer>
-      <script type="text/javascript" defer src="{{ url('/') }}/js/mdb.min.js"></script>
+      <script defer type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+      <script defer type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+      <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+      <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
       @yield('scripts')
    </body>
 </html>

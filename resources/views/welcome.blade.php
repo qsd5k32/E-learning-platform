@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('content')
 <!-- Intro -->
-<div class="view full-page-intro " style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover;">
+<div class="view intro-2" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover;">
 
     <!-- Mask & flexbox options-->
-    <div class="align-items-center pb-5 pt-5 h-100" style="background: rgba(0,0,0,0.5)">
+    <div class="align-items-center mask rgba-stylish-strong h-100 pb-5 pt-5 h-100">
 
         <!-- Content -->
         <div class="container pt-5">
@@ -38,7 +38,7 @@
                 <div class="col-md-6 col-xl-5 mb-4">
 
                     <!--Card-->
-                    <div class="card shadow" style="background: rgba(0,0,0,0.5)">
+                    <div class="card shadow">
 
                         <!--Card content-->
                         <div class="text-white card-body">
@@ -48,7 +48,7 @@
                                 @csrf
 
                                 <div class="md-form">
-                                    <i class="fas fa-user prefix"></i>
+                                    <i class="fas fa-user prefix white-text"></i>
                                     <input type="text" id="username" class="form-control" name="username" value="{{ old('username') }}">
                                     <label for="username">Username</label>
                                     @if ($errors->has('username'))
@@ -58,7 +58,7 @@
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-signature prefix"></i>
+                                    <i class="fas fa-signature prefix white-text"></i>
                                     <input type="text" id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required >
                                     <label for="name">{{ __('Name') }}</label>
                                     @if ($errors->has('name'))
@@ -68,7 +68,7 @@
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-at prefix"></i>
+                                    <i class="fas fa-at prefix white-text"></i>
                                     <input type="email" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required >
                                     <label for="email">{{ __('E-Mail Address') }}</label>
                                     @if ($errors->has('email'))
@@ -78,7 +78,7 @@
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-lock prefix"></i>
+                                    <i class="fas fa-lock prefix white-text"></i>
                                     <input type="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required >
                                     <label for="password">{{ __('Password') }}</label>
                                     @if ($errors->has('password'))
@@ -89,7 +89,7 @@
                                 </div>
 
                                 <div class="md-form">
-                                    <i class="fas fa-lock prefix"></i>
+                                    <i class="fas fa-lock prefix white-text"></i>
                                     <input type="password" id="password-confirm" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" required >
                                     <label for="password-confirm">{{ __('Confirm Password') }}</label>
 
@@ -326,410 +326,45 @@
   <!-- Intro -->
 @endsection
 @section('links')
-  <style>
-    .timeline-main .stepper.stepper-vertical.timeline li a {
-      padding: 0px 24px;
-      left: 50%;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline li a {
-        left: 6%;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li a {
-        left: 6%;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li a .circle {
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      font-size: 1.4em;
-      text-align: center;
-      position: absolute;
-      top: 16px;
-      margin-left: -50px;
-      background-color: #ccc;
-      z-index: 2;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li .step-content {
-      width: 45%;
-      float: left;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-      position: relative;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content {
-        width: 80%;
-        left: 3rem;
-        margin-right: 3rem;
-        margin-bottom: 2rem;
-        float: right;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content {
-        width: 85%;
-        left: 3rem;
-        margin-right: 3rem;
-        margin-bottom: 2rem;
-        float: right;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li .step-content:before {
-      position: absolute;
-      top: 26px;
-      right: -15px;
-      display: inline-block;
-      border-top: 15px solid transparent;
-      border-left: 15px solid #e0e0e0;
-      border-right: 0 solid #e0e0e0;
-      border-bottom: 15px solid transparent;
-      content: " ";
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li .step-content:after {
-      position: absolute;
-      top: 27px;
-      right: -14px;
-      display: inline-block;
-      border-top: 14px solid transparent;
-      border-left: 14px solid #fff;
-      border-right: 0 solid #fff;
-      border-bottom: 14px solid transparent;
-      content: " ";
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li.timeline-inverted {
-      -webkit-box-align: end;
-      -webkit-align-items: flex-end;
-      -ms-flex-align: end;
-      align-items: flex-end;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li.timeline-inverted .step-content {
-      float: right;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li.timeline-inverted .step-content:before {
-      border-left-width: 0;
-      border-right-width: 15px;
-      left: -15px;
-      right: auto;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li.timeline-inverted .step-content:after {
-      border-left-width: 0;
-      border-right-width: 14px;
-      left: -14px;
-      right: auto;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline li:not(:last-child):after {
-      content: " ";
-      position: absolute;
-      width: 3px;
-      background-color: #e0e0e0;
-      left: 50%;
-      top: 65px;
-      margin-left: -1.5px;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline li:not(:last-child):after {
-        left: 6%;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li:not(:last-child):after {
-        left: 6%;
-      }
-    }
-
-    @media (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline li {
-        -webkit-box-align: end;
-        -webkit-align-items: flex-end;
-        -ms-flex-align: end;
-        align-items: flex-end;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:before {
-      top: 1rem;
-      border-left: 15px solid #D32F2F;
-      border-right: 0 solid #D32F2F;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:after {
-      top: 1rem;
-      border-left: 14px solid #D32F2F;
-      border-right: 0 solid #D32F2F;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li .step-content .timeline-header {
-      -webkit-border-top-left-radius: 2px;
-      border-top-left-radius: 2px;
-      -webkit-border-top-right-radius: 2px;
-      border-top-right-radius: 2px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li.timeline-inverted .step-content:before {
-      border-left-width: 0;
-      border-right-width: 15px;
-      left: -15px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li.timeline-inverted .step-content:after {
-      border-left-width: 0;
-      border-right-width: 14px;
-      left: -14px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.colorful-timeline li:not(:last-child):after {
-      background-color: #D32F2F;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-animated .more-padding {
-      padding-right: 100px;
-      padding-left: 100px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-animated li {
-      -webkit-transition: all 0.7s ease-in-out;
-      -o-transition: all 0.7s ease-in-out;
-      transition: all 0.7s ease-in-out;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li a {
-      padding: 0px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li a .circle {
-      width: 23px;
-      height: 23px;
-      line-height: 23px;
-      font-size: 1.4em;
-      text-align: center;
-      position: absolute;
-      top: 16px;
-      margin-left: -12px;
-      background-color: #ccc;
-      z-index: 2;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content {
-      width: 45%;
-      float: left;
-      -webkit-border-radius: 2px;
-      border-radius: 2px;
-      position: relative;
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content {
-        width: 80%;
-        left: 3rem;
-        margin-right: 3rem;
-        margin-bottom: 2rem;
-        float: right;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content {
-        width: 85%;
-        left: 3rem;
-        margin-right: 3rem;
-        margin-bottom: 2rem;
-        float: right;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:before {
-      position: absolute;
-      top: 26px;
-      display: inline-block;
-      border-top: 15px solid transparent;
-      border-left: 15px solid #e0e0e0;
-      border-right: 0 solid #e0e0e0;
-      border-bottom: 15px solid transparent;
-      content: " ";
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:after {
-      position: absolute;
-      top: 27px;
-      display: inline-block;
-      border-top: 14px solid transparent;
-      border-left: 14px solid #fff;
-      border-right: 0 solid #fff;
-      border-bottom: 14px solid transparent;
-      content: " ";
-    }
-
-    @media (max-width: 450px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    @media (min-width: 451px) and (max-width: 1025px) {
-      .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-      }
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content.hoverable {
-      -webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li .step-content.hoverable:hover {
-      -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li:not(:last-child):after {
-      width: 2px;
-      background-color: #9e9e9e;
-      top: 32px;
-      height: 100%;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li.timeline-inverted .step-content:before {
-      border-left-width: 0;
-      border-right-width: 15px;
-      left: -15px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-simple li.timeline-inverted .step-content:after {
-      border-left-width: 0;
-      border-right-width: 14px;
-      left: -14px;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-images li a .circle {
-      font-size: 1rem;
-    }
-
-    .timeline-main .stepper.stepper-vertical.timeline.timeline-images li:not(:last-child):after {
-      background-color: #26c6da;
-    }
-
-  </style>
+  <link rel="stylesheet" href="{{ asset('css/addons-pro/timeline.min.css') }}">
   <style>
     .navbar {
       background-color: transparent;
     }
     .top-nav-collapse {
       background-color: #1C2331;
+    }
+    .card {
+        background-color: rgba(229, 228, 255, 0.2);
+    }
+    .md-form label {
+        color: #ffffff;
+    }
+    h6 {
+        line-height: 1.7;
+    }
+
+
+    .card {
+        margin-top: 30px;
+        /*margin-bottom: -45px;*/
+
+    }
+
+    .md-form input[type=text]:focus:not([readonly]),
+    .md-form input[type=email]:focus:not([readonly]),
+    .md-form input[type=password]:focus:not([readonly]) {
+        border-bottom: 1px solid #8EDEF8;
+        box-shadow: 0 1px 0 0 #8EDEF8;
+    }
+    .md-form input[type=text]:focus:not([readonly])+label,
+    .md-form input[type=email]:focus:not([readonly])+label,
+    .md-form input[type=password]:focus:not([readonly])+label {
+        color: #8EDEF8;
+    }
+
+    .md-form .form-control {
+        color: #fff;
     }
   </style>
 @endsection
