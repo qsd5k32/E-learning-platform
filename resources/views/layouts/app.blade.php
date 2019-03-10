@@ -120,8 +120,25 @@
          </ul>
       </div>
         </nav>
-            @yield('content')
+      @guest
+      @else
+          @if(Auth::user()->level == 2)
+              <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+                  <a class="btn-floating btn-lg red">
+                      <i class="fas fa-pencil-alt"></i>
+                  </a>
 
+                  <ul class="list-unstyled">
+                      <li><a class="btn-floating shadow-none"></a></li>
+                      <li><a class="btn-floating shadow-none"></a></li>
+                      <li><a class="btn-floating red" href="{{ route('createCourse') }}" title="Create course"><i class="fas fa-plus"></i></a></li>
+                      <li><a class="btn-floating blue" href="{{ route('coursesTeacher') }}" title="My courses"><i class="fas fa-book-open"></i></a></li>
+                  </ul>
+              </div>
+          @endif
+      @endguest
+
+            @yield('content')
 <footer class="page-footer font-small unique-color-dark">
 
     <div style="background-color: #6351ce;">
@@ -262,7 +279,7 @@
     <!-- Copyright -->
 
   </footer>
-      <script defer type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+      <script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
       <script defer type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
       <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
       <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>

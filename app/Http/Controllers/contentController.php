@@ -8,7 +8,7 @@ use Auth;
 use Illuminate\Http\Request;
 use Storage;
 
-class addCourseController extends Controller
+class contentController extends Controller
 {
 
    private $name;
@@ -16,12 +16,13 @@ class addCourseController extends Controller
    private $content = 'nullable';
    private $course;
    private $mime;
+   private $url;
 
 
    private function checkId($id)
    {
-       $this->course = Course::where('course_id',$id)->where('author_id' , Auth::id())->count();
-       if($this->course == 1 or !is_numeric($id)) {
+       $this->course = Course::where('course_id',$id)->where('author_id' , Auth::id())->get();
+       if($this->course->count() == 1 or !is_numeric($id)) {
            return true;
        }
        return abort(404);
@@ -71,7 +72,6 @@ class addCourseController extends Controller
 		$this->title = $request->input('courseTitle');
 		
 	}
-    // @TODO make add content for article and pdf files
 
 
   // add file content to playlist
@@ -83,16 +83,22 @@ class addCourseController extends Controller
     
     //get file
     $file = $request->file('coursePath');
-
-    // storre file
-    $video = Storage::put('courses',$file);
-
+    $type = $request->input('contentType');
+    switch ($type)
+    {
+        case 1:
+            $this->url = Storage::put('documents',$file);
+            break;
+        case 2:
+            $this->url = Storage::put('courses',$file);
+            break;
+    }
     // insert data to databases
 		Playlist::insert([
         'course_id' => $this->name,
         'course_name' => $this->title,
-        'course_url' => $video,
-        'type' => $request->input('contentType'),
+        'course_url' => $this->url,
+        'type' => $type,
         'created_at' => date('Y-m-d H:i:s'),
         'updated_at' => date('Y-m-d H:i:s')
       ]);
@@ -129,6 +135,20 @@ class addCourseController extends Controller
         $type = $request->input('contentType');
         if($type == 1 or $type == 2){ $this->addFileContent($id,$request);}
         if($type == 3){ $this->addArticle($id,$request);}
-        dd('hello');
+        return view('message.success',['message' => 'your content added with success']);
+    }
+
+    public function editContent($id)
+    {
+        $this->checkId($id);
+        $playlist = playlist::where('course_id',$id)->get();
+        return view('teacher.editContent',['playlist' => $playlist]);
+    }
+
+    public function deleteContent($id)
+    {
+        $playlist = playlist::where('course_id',$id)->get();
+        playlist::find($id)->delete();
+        return back()->with('success','your content was move to trash');
     }
 }

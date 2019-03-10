@@ -14,4 +14,5 @@ class playlist extends Model
     }
     protected $fillable = ['course_id', 'course_name', 'course_url'];
     protected $dates = ['deleted_at'];
+
 }

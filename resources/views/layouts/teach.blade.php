@@ -26,7 +26,7 @@
             <!-- Logo -->
             <li class="logo-sn waves-effect">
                 <div class="text-center">
-                    <a href="#" class="pl-0"><img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" class=""></a>
+                    <a href="#" class="pl-0"><i class="fas fa-book-open fa-3x"></i></a>
                 </div>
             </li>
             <!--/. Logo -->
@@ -35,85 +35,14 @@
             <li>
                 <ul class="collapsible collapsible-accordion">
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-tachometer-alt"></i>
-                            Dashboards<i class="fas fa-angle-down rotate-icon"></i></a>
+                            Courses<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
+                                <li><a href="{{ route('createCourse') }}" class="waves-effect">Create course</a></li>
                                 <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">My courses</a></li>
-                                <li><a href="{{ route('createCourse') }}" class="waves-effect">My courses</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-image"></i> Pages<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../pages/login.html" class="waves-effect">Login</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-user"></i> Profile<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../profile/basic-1.html" class="waves-effect">Basic 1</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fab fa-css3"></i> CSS<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../css/grid.html" class="waves-effect">Grid system</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-th"></i> Components<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../components/buttons.html" class="waves-effect">Buttons</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="far fa-check-square"></i> Forms<i
-                                    class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../forms/basic.html" class="waves-effect">Basic</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-table"></i> Tables<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../tables/basic.html" class="waves-effect">Basic</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-map"></i> Maps<i class="fas fa-angle-down rotate-icon"></i></a>
-                        <div class="collapsible-body">
-                            <ul>
-                                <li><a href="../maps/google.html" class="waves-effect">Google Maps</a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </li>
-                    <!-- Simple link -->
-                    <li><a href="../alerts/alerts.html" class="collapsible-header waves-effect"><i class=" far fa-bell"></i>
-                            Alerts</a></li>
-
-                    <li><a href="../modals/modals.html" class="collapsible-header waves-effect"><i class=" fas fa-bolt"></i>
-                            Modals</a></li>
-
-                    <li><a href="../charts/charts.html" class="collapsible-header waves-effect"><i class=" fas fa-chart-pie"></i>
-                            Charts</a></li>
-
-                    <li><a href="../calendar/calendar.html" class="collapsible-header waves-effect"><i class=" far fa-calendar-check"></i>
-                            Calendar</a></li>
-
                     <li><a href="../sections/sections.html" class="collapsible-header waves-effect"><i class=" fas fa-th-large"></i>
                             Sections</a></li>
 
@@ -133,54 +62,26 @@
         </div>
         <!-- Breadcrumb-->
         <div class="breadcrumb-dn mr-auto">
-            <p>Material Design for Bootstrap</p>
+            <p>{{ config('app.name', 'Laravel') }}</p>
         </div>
 
         <!--Navbar links-->
         <ul class="nav navbar-nav nav-flex-icons ml-auto">
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown notifications-nav">
-                <a class="nav-link dropdown-toggle waves-effect" id="navbarDropdownMenuLink" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <span class="badge red">3</span> <i class="fas fa-bell"></i>
-                    <span class="d-none d-md-inline-block">Notifications</span>
-                </a>
-                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-money mr-2" aria-hidden="true"></i>
-                        <span>New order received</span>
-                        <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 13 min</span>
+            @guest
+            @else
+                <li class="nav-item avatar dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false">
+                        <img src="@if(!empty(Auth::user()->detail->photo)) {{ asset('uploads') . '/' . Auth::user()->detail->photo }} @else {{ asset('uploads/profile.svg') }} @endif" class="rounded-top rounded-bottom z-depth-0" style="width:35px; height: 35px" alt="avatar image">
+                        {{ Auth::user()->username }}
                     </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-money mr-2" aria-hidden="true"></i>
-                        <span>New order received</span>
-                        <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 33 min</span>
-                    </a>
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-line-chart mr-2" aria-hidden="true"></i>
-                        <span>Your campaign is about to end</span>
-                        <span class="float-right"><i class="far  fa-clock" aria-hidden="true"></i> 53 min</span>
-                    </a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect"><i class="fas fa-envelope"></i> <span class="clearfix d-none d-sm-inline-block">Contact</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link waves-effect"><i class="far fa-comments"></i> <span class="clearfix d-none d-sm-inline-block">Support</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle waves-effect" href="#" id="userDropdown" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user"></i> <span class="clearfix d-none d-sm-inline-block">Profile</span></a>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Log Out</a>
-                    <a class="dropdown-item" href="#">My account</a>
-                </div>
-            </li>
-
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-55">
+                        <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i>  My account</a>
+                        <a class="dropdown-item" href="{{ url('account/setting') }}"><i class="fas fa-cog"></i>  Setting</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                    </div>
+                </li>
+            @endguest
         </ul>
         <!--/Navbar links-->
     </nav>
@@ -205,7 +106,7 @@
     <!--Copyright-->
     <div class="footer-copyright py-3 text-center">
         <div class="container-fluid">
-            © 2018 Copyright: <a target="_blank"> Elearn </a>
+            © 2018 Copyright: <a target="_blank"> {{ config('app.name', 'Laravel') }} </a>
 
         </div>
     </div>

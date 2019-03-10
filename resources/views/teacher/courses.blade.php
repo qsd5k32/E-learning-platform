@@ -21,11 +21,12 @@
                                     <h5 class="text-success"><i class="fas fa-globe-africa"></i> Public</h5>
                                 @endif
                                 <h3 class="card-title pt-2"><strong>{{ $course->name}}</strong></h3>
-                                <p>{{ substr($course->description,0,90) . ' ...' }}</p>
+                                <p>{{ strip_tags(substr($course->description,0,90)) . ' ...' }}</p>
                                 <div class="d-flex justify-content-center">
                                     <a class="btn btn-primary" href="{{ route('editCourse',['id' => $course->course_id]) }}">Edit</a>
                                     <a class="btn btn-primary" href="{{ route('addContent',['id' => $course->course_id]) }}">Add </a>
                                 </div>
+                                    <a class="btn btn-primary" href="{{ route('editContent',['id' => $course->course_id]) }}">Edit Content</a>
                             </div>
                         </div>
 

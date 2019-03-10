@@ -12,19 +12,19 @@
                 </a>
                 @foreach($playlist as $course)
                     @switch($course->type)
-                        @case(1)
+                        @case(1) <!-- File -->
                             <div class="list-group-item">
-                                <a href="{{ route('view',['course_id' => $course->course_id , 'id' => $course->id]) }}"><p class="mb-0"><i class="fas fa-file mr-4 danger-color-dark p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
+                                <a href="{{ route('file',['id' => $course->id ,'token' => $token]) }}"><p class="mb-0"><i class="fas fa-file mr-4 danger-color-dark p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
                             </div>
                             @break
-                        @case(2)
+                        @case(2) <!-- Video -->
                             <div class="list-group-item">
-                                <a href="{{ route('view',['course_id' => $course->course_id , 'id' => $course->id]) }}"><p class="mb-0"><i class="fas fa-video mr-4 blue p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
+                                <a href="{{ route('view',['id' => $course->id ,'token' => $token]) }}"><p class="mb-0"><i class="fas fa-video mr-4 blue p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
                             </div>
                             @break
-                        @case(3)
+                        @case(3) <!-- Article -->
                             <div class="list-group-item">
-                                <a href="{{ route('view',['course_id' => $course->course_id , 'id' => $course->id]) }}"><p class="mb-0"><i class="fas fa-newspaper mr-4 default-color p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
+                                <a href="{{ route('article',['id' => $course->course_url ,'token' => $token]) }}"><p class="mb-0"><i class="fas fa-newspaper mr-4 default-color p-3 white-text rounded " aria-hidden="true"></i>{{ $course->course_name }}</p></a>
                             </div>
                             @break
                     @endswitch

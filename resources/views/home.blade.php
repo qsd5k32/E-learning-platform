@@ -38,7 +38,7 @@
                                 </strong>
                             </h4>
                             <!-- Description -->
-                            <p class="card-text">{{ substr($course->description,0,90) . ' ...' }}</p>
+                            <p class="card-text">{{ strip_tags(substr($course->description,0,140)) . ' ...' }}</p>
                             <!-- Card footer -->
                             <div class="card-footer px-1">
             <span class="float-left font-weight-bold">

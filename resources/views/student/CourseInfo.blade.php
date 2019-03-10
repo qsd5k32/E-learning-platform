@@ -122,7 +122,7 @@
                                             </h4>
                                             <hr>
                                             <!--Text-->
-                                            <p class="dark-grey-text mb-3 mt-4 mx-4">{{ $course->description }}</p>
+                                            <p class="dark-grey-text mb-3 mt-4 mx-4">{!! $course->description !!}</p>
                                             <hr>
                                             <p class="text-success mb-3 mt-4 mx-4"><strong class="grey-text">Price : </strong> {{ $course->price }} DZD</p>
 

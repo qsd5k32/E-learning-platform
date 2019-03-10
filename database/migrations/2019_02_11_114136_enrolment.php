@@ -18,8 +18,10 @@ class Enrolment extends Migration
             $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
-            $table->smallInteger('payment')->default(0)->comment('accept 1 & 0');
-            $table->timestamps();       
+            $table->string('payment_token')->nullable();
+            $table->string('token_key')->nullable();
+            $table->string('payment_prove')->nullable();
+            $table->timestamps();
         });
     }
 

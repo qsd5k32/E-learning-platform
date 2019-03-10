@@ -7,6 +7,8 @@ use App\playlist;
 use App\Course;
 use App\Enrolment;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\paymentController;
+use Closure;
 
 class coursesController extends Controller
 {
@@ -15,8 +17,12 @@ class coursesController extends Controller
     // view course Information
     public function checkStatus($id)
     {
-        $course = Course::where('course_id',$id)->first();
-        if($course->status == 2){
+        $course = Course::where('course_id',$id);
+        if($course->count() == 0)
+        {
+            return abort(404);
+        }
+        if($course->value('status') == 2){
             return abort(404);
         }
     }
@@ -25,25 +31,32 @@ class coursesController extends Controller
     public function viewPlaylist($id)
     {
         $this->checkStatus($id);
-        $payment = Enrolment::where([
+        $token = Enrolment::where([
             'student_id' => Auth::id(),
             'course_id' => $id
-        ])->value('payment');
+        ])->value('payment_token');
 
-        if($payment != 1 ) return abort(403,'you need to pay to show this content ');
+        if(!paymentController::pay($id))
+        {
+            return view('message.methodPayment',['course_id' => $id]);
+        }
+        paymentController::check($token);
+
 
         $course = Course::where('course_id',$id)->first();
         $playlist = playlist::where('course_id',$id)->get();
         return view('student.CoursePlaylist',[
             'playlist' => $playlist ,
-            'course' => $course
+            'course' => $course ,
+            'token' => $token
         ]);
     }
 
-    public function viewCourse($id,$course_id)
+    public function viewCourse($id,$token)
     {
-        if(playlist::where('id',$course_id)->count() == 0) abort(404);
-        return view('student.viewContent',['url' => $id ,'course_id' => $course_id]);
+        paymentController::check($token);
+        if(playlist::where('id',$id)->count() == 0) abort(404);
+        return view('student.viewContent',['id' => $id,'token' => $token]);
     }
 
     // view more info about course

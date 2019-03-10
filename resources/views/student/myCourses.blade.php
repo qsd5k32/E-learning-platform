@@ -16,7 +16,7 @@
                         <div class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
                             <div>
                                 <h3 class="card-title pt-2"><strong>{{ $course->name}}</strong></h3>
-                                <p>{{ substr($course->description,0,90) . ' ...' }}</p>
+                                <p>{{ strip_tags(substr($course->description,0,120)) . ' ...' }}</p>
                                 <a class="btn btn-primary" href="{{ route('playlist',['id' => $course->course_id]) }}"><i class="fas fa-book-open left"></i> learn now</a>
                             </div>
                         </div>

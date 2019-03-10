@@ -4,7 +4,7 @@
     <div class="unique-color-dark">
         <div class="container p-5">
             <video autoplay id="player" controls style="max-height: 100% !important;">
-                <source src="{{ route('video',['course_id' => $course_id ,'id' => $url]) }}" type="video/mp4" />
+                <source src="{{ route('video',['id' => $id ,'token' => $token]) }}" type="video/mp4" />
             </video>
         </div>
     </div>

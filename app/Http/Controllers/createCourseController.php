@@ -80,7 +80,7 @@ class createCourseController extends Controller
 	public function updateCourse($id)
     {
         $this->checkId($id);
-        $course = Course::find($id)->first();
+        $course = Course::where('course_id',$id)->first();
         return view('teacher.updateCourse',['course' => $course]);
     }
 

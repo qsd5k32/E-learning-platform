@@ -12,7 +12,7 @@
 */
 // welcome page
 Route::get('/', function () { return view('welcome'); })->middleware('guest');
-Route::get('/test', function () { return view('test'); });
+Route::get('/test', function () { return view('message.success',['message' => 'hada test bark ya sa7bi']); });
 
 
 // Auth pages
@@ -34,11 +34,19 @@ Route::group(['middleware' => ['verified','auth']], function () {
     Route::post('/account/setting','settingController@setData');
     // enroll to course
     Route::get('/enroll/{course_id}','enrollController@enroll')->name('enroll');
+    // send prove
+    Route::post('/payment/prove/{course_id}','paymentController@sendProve')->name('paymentProve');
     // playlist
     Route::get('/course/playlist/{id}','coursesController@viewPlaylist')->name('playlist');
     Route::get('/myCourses','enrollController@myCourses')->name('myCourses');
-    Route::get('/course/playlist/view/{course_id}/{id}','coursesController@viewCourse')->name('view');
-    Route::get('/video/{id}/{course_id}', 'videoController@url')->name('video');
+    // view video
+    Route::get('/course/playlist/video/{id}/{token}','coursesController@viewCourse')->name('view');
+    // video
+    Route::get('/video/{id}/{token}', 'videoController@url')->name('video');
+    // article
+    Route::get('/course/playlist/article/{id}/{token}', 'articleController@index')->name('article');
+    // file
+    Route::get('/course/playlist/file/{id}/{token}', 'fileController@download')->name('file');
 });
 
 // teacher permission
@@ -47,9 +55,17 @@ Route::group(['middleware' => ['verified','teacher','auth']], function () {
     Route::get('/course/create','createCourseController@index')->name('createCourse');
     Route::post('/course/create', 'createCourseController@createNew');
     // course edit or add
-    Route::get('/teacher/courses/','addCourseController@index')->name('coursesTeacher');
-    Route::get('/course/add/{id}','addCourseController@addContent')->name('addContent');
-    Route::post('/course/add/{id}','addCourseController@setContent')->name('setContent');
+
+    // courses created with author
+    Route::get('/teacher/courses/','contentController@index')->name('coursesTeacher');
+    // add content
+    Route::get('/course/content/add/{id}','contentController@addContent')->name('addContent');
+    Route::post('/course/content/add/{id}','contentController@setContent')->name('setContent');
+    //edit content
+    Route::get('/course/content/edit/{id}','contentController@editContent')->name('editContent');
+    // delete content
+    Route::get('/course/content/delete/{id}','contentController@deleteContent')->name('deleteContent');
+    // edit course
     Route::get('/course/edit/{id}','createCourseController@updateCourse')->name('editCourse');
     Route::post('/course/edit/{id}','createCourseController@update');
 });

@@ -34,6 +34,7 @@
       <!-- Sign in button -->
       <button class="btn btn-primary btn-rounded" type="submit"><i class="fab fa-youtube"></i>Add new</button>
     </form>
+    <hr>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -42,7 +43,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+    @endif
 </div>
 @endsection
 @section('scripts')
