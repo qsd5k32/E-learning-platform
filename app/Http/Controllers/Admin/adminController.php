@@ -12,15 +12,14 @@ class adminController extends Controller
     public function index()
     {
         $enrolemnt = Enrolment::whereNull('payment_token')->join('users','enrolments.student_id','=','users.id')
-            ->join('courses','enrolments.course_id','=','courses.course_id')->get();
-        $enrolemnt->makeHidden(['password','email_verified_at','remember_token','updated_at','created_at','deleted_at','author_id','user_id','description','level']);
+            ->join('courses','enrolments.course_id','=','courses.course_id')->get([
+                'enrolments.id' , 'users.username','users.email','courses.name','enrolments.payment_prove']);
         return view('admin.index',['enrolment' => $enrolemnt]);
     }
-    public function payment($id,$c_id)
+    public function payment($id)
     {
         $enroll = Enrolment::where([
-            'student_id' => $id,
-            'course_id' => $c_id
+            'id' => $id,
         ]);
         $token = Str::random();
         $key = Hash::make($token);
@@ -28,6 +27,6 @@ class adminController extends Controller
             'payment_token' => $token,
             'token_key' => $key
         ]);
-        return view('message.success',['message' => 'payment receipt']);
+        return back()->with(['success' => 'your user was approved with success']);
     }
 }

@@ -5,9 +5,8 @@ use App\Course;
 use DB;
 use Auth;
 use Illuminate\Http\Request;
-use Youtube;
 
-class createCourseController extends Controller
+class courseController extends Controller
 {
 	//  youtube video privacy ('public , private , unlisted')
 	private $privacy; 
@@ -110,7 +109,7 @@ class createCourseController extends Controller
             'price' => $request->input('coursePrice'),
             'updated_at' => date('Y-m-d H:i:s')
         ]);
-        return view('message.success',['message' => 'your course was updated with success']);
+        return back()->with(['success' => 'your course was updated wit success']);
 
     }
 

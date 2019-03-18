@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container view pt-5 d-flex justify-content-center">
-        <div class="text-center align-self-center mt-5">
+    <div class="container view d-flex justify-content-center">
+        <div class="text-center align-self-center">
             <i class=" fa fa-check fa-10x text-success"></i><br>
             <h1 class="text-success"><strong>Success</strong></h1>
             <p>{{ $message }}</p>

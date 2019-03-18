@@ -8,7 +8,7 @@ use Validator;
 use Auth;
 use App\Detail;
 
-class accountController extends Controller
+class AccountController extends Controller
 {
     private $photoName;
     public function index()
@@ -27,7 +27,9 @@ class accountController extends Controller
             'phone_number' => 'numeric|min:10|nullable',
             'address' => 'string|nullable',
             'photoPath' => 'image|mimes:jpeg,png,jpg,gif,svg|nullable',
-            'resume' => 'string|nullable'
+            'resume' => 'string|nullable',
+            'birthday' => 'required|string',
+            'birthday_place' => 'required|string',
         ]);
         // request photo url
         $photo = $request->file('photoPath');
@@ -53,11 +55,13 @@ class accountController extends Controller
             ],[
             'user_id' => Auth::id(),
             'identity_national_number' => $request->input('identity_national_number'),
+            'birthday' => $request->input('birthday'),
+            'birthday_place' => $request->input('birthday_place'),
             'phone_number' => $request->input('phone_number'),
             'address' => $request->input('address'),
             'resume' => $request->input('resume'),
-            'photo' => $this->photoName
+            'photo' => $this->photoName,
         ])->save();
-        return view('message.success',['message' => 'your data was saved']);
+        return back()->with(['success' => 'your account details was saved with success']);
     }
 }

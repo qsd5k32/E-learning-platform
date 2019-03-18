@@ -16,8 +16,6 @@
                 <label for="id_national">Email</label>
             </div>
 
-
-
             <div class="form-group mb-3 mt-2">
                 <button type="submit" class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0">
                     Save

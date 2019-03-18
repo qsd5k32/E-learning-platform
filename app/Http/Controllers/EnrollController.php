@@ -7,7 +7,7 @@ use App\Enrolment;
 use Auth;
 use App\Course;
 
-class enrollController extends Controller
+class EnrollController extends Controller
 {
     public function checkEnrollment($course_id)
     {

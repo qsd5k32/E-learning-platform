@@ -19,7 +19,7 @@
                     <td>
                         <div class="d-flex">
                             <a class="ml-1 mr-1 red-text" href="{{ route('deleteContent',['id' => $content->id ]) }}"><i class="fas fa-trash"></i> Delete</a>
-                            <a class="ml-1 mr-1 blue-text"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="ml-1 mr-1 blue-text" href="{{ route('updateContent',['id' => $content->id ]) }}"><i class="fas fa-edit"></i> Edit</a>
                         </div>
                     </td>
                 </tr>

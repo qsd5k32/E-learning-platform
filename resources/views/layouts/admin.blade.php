@@ -17,30 +17,63 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     @yield('links')
 </head>
-<body>
-<div id="app">
-    <!--Navbar -->
+<body class="fixed-sn white-skin">
+<header>
 
-    <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
-        <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-                aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Our team</a>
-                </li>
-            </ul>
+    <!-- Sidebar navigation -->
+    <div id="slide-out" class="side-nav sn-bg-4 fixed">
+        <ul class="custom-scrollbar">
+            <!-- Logo -->
+            <li class="logo-sn waves-effect">
+                <div class="text-center">
+                    <a href="#" class="pl-0"><i class="fas fa-book-open fa-3x"></i></a>
+                </div>
+            </li>
+            <!--/. Logo -->
 
-            <ul class="navbar-nav ml-auto nav-flex-icons">
+            <!-- Side navigation links -->
+            <li>
+                <ul class="collapsible collapsible-accordion">
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-tachometer-alt"></i>
+                            Courses<i class="fas fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="{{ route('createCourse') }}" class="waves-effect">Create course</a></li>
+                                <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">My courses</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="../sections/sections.html" class="collapsible-header waves-effect"><i class=" fas fa-th-large"></i>
+                            Sections</a></li>
+
+                </ul>
+            </li>
+            <!--/. Side navigation links -->
+        </ul>
+        <div class="sidenav-bg mask-strong"></div>
+    </div>
+    <!--/. Sidebar navigation -->
+
+    <!-- Navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar double-nav">
+        <!-- SideNav slide-out button -->
+        <div class="float-left">
+            <a href="#" data-activates="slide-out" class="button-collapse black-text"><i class="fas fa-bars"></i></a>
+        </div>
+        <!-- Breadcrumb-->
+        <div class="breadcrumb-dn mr-auto">
+            <p>{{ config('app.name', 'Laravel') }}</p>
+        </div>
+
+        <!--Navbar links-->
+        <ul class="nav navbar-nav nav-flex-icons ml-auto">
+            @guest
+            @else
                 <li class="nav-item avatar dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false">
                         <img src="@if(!empty(Auth::user()->detail->photo)) {{ asset('uploads') . '/' . Auth::user()->detail->photo }} @else {{ asset('uploads/profile.svg') }} @endif" class="rounded-top rounded-bottom z-depth-0" style="width:35px; height: 35px" alt="avatar image">
+                        {{ Auth::user()->username }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-55">
                         <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i>  My account</a>
@@ -48,170 +81,42 @@
                         <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
                     </div>
                 </li>
-            </ul>
-        </div>
+            @endguest
+        </ul>
+        <!--/Navbar links-->
     </nav>
-    <ul class="nav tabs-cyan text-white" id="myClassicTab">
-        <li class="nav-item">
-            <a class="nav-link text-white waves-light" href="#profile-classic">payment</a>
-        </li>
-    </ul>
-    <main>
+    <!-- /.Navbar -->
+
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main>
+    <div class="container">
+
         @yield('content')
-    </main>
 
-    <!-- Footer -->
-    <footer class="page-footer font-small unique-color-dark">
+    </div>
+</main>
+<!--Main layout-->
 
-        <div style="background-color: #6351ce;">
-            <div class="container">
+<!--Footer-->
+<footer class="page-footer pt-0 mt-5">
 
-                <!-- Grid row-->
-                <div class="row py-4 d-flex align-items-center">
-
-                    <!-- Grid column -->
-                    <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
-                        <h6 class="mb-0">Get connected with us on social networks!</h6>
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="col-md-6 col-lg-7 text-center text-md-right">
-
-                        <!-- Facebook -->
-                        <a class="fb-ic">
-                            <i class="fab fa-facebook-f white-text mr-4"> </i>
-                        </a>
-                        <!-- Twitter -->
-                        <a class="tw-ic">
-                            <i class="fab fa-twitter white-text mr-4"> </i>
-                        </a>
-                        <!-- Google +-->
-                        <a class="gplus-ic">
-                            <i class="fab fa-google-plus-g white-text mr-4"> </i>
-                        </a>
-                        <!--Linkedin -->
-                        <a class="li-ic">
-                            <i class="fab fa-linkedin-in white-text mr-4"> </i>
-                        </a>
-                        <!--Instagram-->
-                        <a class="ins-ic">
-                            <i class="fab fa-instagram white-text"> </i>
-                        </a>
-
-                    </div>
-                    <!-- Grid column -->
-
-                </div>
-                <!-- Grid row-->
-
-            </div>
-        </div>
-
-        <!-- Footer Links -->
-        <div class="container text-center text-md-left mt-5">
-
-            <!-- Grid row -->
-            <div class="row mt-3">
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-
-                    <!-- Content -->
-                    <h6 class="text-uppercase font-weight-bold">Company name</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur
-                        adipisicing elit.</p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Products</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <a href="#!">MDBootstrap</a>
-                    </p>
-                    <p>
-                        <a href="#!">MDWordPress</a>
-                    </p>
-                    <p>
-                        <a href="#!">BrandFlow</a>
-                    </p>
-                    <p>
-                        <a href="#!">Bootstrap Angular</a>
-                    </p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <a href="#!">Your Account</a>
-                    </p>
-                    <p>
-                        <a href="#!">Become an Affiliate</a>
-                    </p>
-                    <p>
-                        <a href="#!">Shipping Rates</a>
-                    </p>
-                    <p>
-                        <a href="#!">Help</a>
-                    </p>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-
-                    <!-- Links -->
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-                    <p>
-                        <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
-                    <p>
-                        <i class="fas fa-envelope mr-3"></i> info@example.com</p>
-                    <p>
-                        <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
-                    <p>
-                        <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
+    <!--Copyright-->
+    <div class="footer-copyright py-3 text-center">
+        <div class="container-fluid">
+            © 2018 Copyright: <a target="_blank"> {{ config('app.name', 'Laravel') }} </a>
 
         </div>
-        <!-- Footer Links -->
+    </div>
+    <!--/.Copyright-->
 
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href=""> E learn company </a>
-        </div>
-        <!-- Copyright -->
-
-    </footer>
-    <!-- Footer -->
-</div>
-<script type="text/javascript" src="{{ url('/') }}/js/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/js/popper.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{ url('/') }}/js/mdb.js"></script>
-
-
-<script type="text/javascript">
-    new WOW().init();
-</script>
+</footer>
+<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

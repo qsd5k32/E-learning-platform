@@ -22,7 +22,7 @@
 
                                 <!--Grid column-->
                                 <div class="col-md-12 col-xl-12">
-                                    <div class="row mt-3">
+                                    <div class="mt-3">
                                         {!! $article->content !!}
                                     </div>
                                 </div>

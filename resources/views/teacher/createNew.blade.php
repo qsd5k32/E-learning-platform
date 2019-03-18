@@ -39,6 +39,13 @@
 @endsection
 @section('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
+    <script defer>
+        $(document).ready(function() {
+            @if(Session::has('success'))
+            toastr.warning('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
     <script>
         ClassicEditor
             .create( document.querySelector( '#editor' ) )

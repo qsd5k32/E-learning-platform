@@ -21,14 +21,22 @@ class paymentController extends Controller
             'payment_token' => $token
         ]);
 
-        if(!empty($enrollData->token_key)){
-            if(!Hash::check( $token ,$enrollData))
+        if(!empty($enrollData->value('token_key')))
+        {
+            if(!Hash::check( $token ,$enrollData->value('token_key')))
             {
-                return abort(403);
+                return abort(403,'Payment problem');
             }
             return Closure::class;
         }
-        return abort(403);
+        if(empty($enrollData->value('token_key')))
+        {
+            return abort(403,'Payment problem');
+        }
+        if($enrollData->count() == 0)
+        {
+            return abort(403,'Payment problem');
+        }
     }
 
     // check payment prove

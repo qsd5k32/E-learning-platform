@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\paymentController;
 use Closure;
 
-class coursesController extends Controller
+class CoursesController extends Controller
 {
 
 

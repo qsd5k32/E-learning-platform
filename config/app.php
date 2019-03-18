@@ -175,7 +175,6 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         // custon installed packaged
-        Dawson\Youtube\YoutubeServiceProvider::class,
     ],
 
     /*
@@ -225,7 +224,6 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         // custom installed packages
-        'Youtube' => Dawson\Youtube\Facades\Youtube::class,
 
     ],
 

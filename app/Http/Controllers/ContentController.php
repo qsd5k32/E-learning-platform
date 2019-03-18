@@ -17,8 +17,10 @@ class contentController extends Controller
    private $course;
    private $mime;
    private $url;
+   private $type;
 
 
+   // check if course id is available
    private function checkId($id)
    {
        $this->course = Course::where('course_id',$id)->where('author_id' , Auth::id())->get();
@@ -41,7 +43,7 @@ class contentController extends Controller
    		return  abort(403, "Unauthorized action. you can't access this web page you don't have any courses");
    }
 
-   public function addContent($id)
+   public function add($id)
    {
        $this->checkId($id);
        return view('teacher.addCourse');
@@ -50,8 +52,8 @@ class contentController extends Controller
 
   // validate data
    private function validateCourseData($request){
-    $type = $request->input('contentType');
-    switch ($type){
+    if(empty($this->type)) $this->type = $request->input('contentType');
+    switch ($this->type){
         case 1:
             $this->mime = 'required|mimes:doc,pdf,docx,zip';
             break;
@@ -75,7 +77,7 @@ class contentController extends Controller
 
 
   // add file content to playlist
-   public function addFileContent($id, $request )
+   public function addFile($id, $request )
    {
     // validate request data and url
     $this->checkId($id);
@@ -130,22 +132,70 @@ class contentController extends Controller
         return view('message.success',['message','added with success']);
     }
 
-    public function setContent(Request $request,$id)
+    public function set(Request $request,$id)
     {
         $type = $request->input('contentType');
-        if($type == 1 or $type == 2){ $this->addFileContent($id,$request);}
+        if($type == 1 or $type == 2){ $this->addFile($id,$request);}
         if($type == 3){ $this->addArticle($id,$request);}
-        return view('message.success',['message' => 'your content added with success']);
+        return back()->with(['success' => 'your content was add with success']);
     }
 
-    public function editContent($id)
+    // edit Contents
+    public function edit($id)
     {
         $this->checkId($id);
         $playlist = playlist::where('course_id',$id)->get();
         return view('teacher.editContent',['playlist' => $playlist]);
     }
 
-    public function deleteContent($id)
+    // update Content
+    public function update($id)
+    {
+        $playlist = playlist::where('id',$id)->first();
+        $articleContent = '';
+
+        if($playlist->type == 3){
+            $articleContent = Article::where('id',$playlist->course_url)->value('content');
+        }
+        return view('teacher.updateContent' ,['playlist' => $playlist ,'articleContent' => $articleContent]);
+    }
+
+    // set update
+    public function setUpdate($id,Request $request)
+    {
+        $playlist = playlist::where('id',$id)->first();
+        $this->type = $playlist->type;
+        $this->validateCourseData($request);
+
+        // update content if its article
+        if($playlist->type == 3){
+            $article = Article::where('id' , $playlist->course_url)->update([
+                'course_id' => $playlist->course_id,
+                'title' => $this->title,
+                'content' => $request->input('articleContent'),
+                'updated_at' => date('Y-m-d H:i:s')
+            ]);
+        }
+        $file = $request->file('coursePath');
+        switch ($playlist->type)
+        {
+            case 1:
+                $this->url = Storage::put('documents',$file);
+                break;
+            case 2:
+                $this->url = Storage::put('courses',$file);
+                break;
+        }
+
+        if($playlist->type <= 2 )
+        {
+            dd($playlist->type);
+            playlist::where('id' , $id)->update(['course_url' => $this->url]);
+        }
+        return back()->with('success','your content was updated with success');
+    }
+    // delete content
+    public function delete($id)
     {
         $playlist = playlist::where('course_id',$id)->get();
         playlist::find($id)->delete();

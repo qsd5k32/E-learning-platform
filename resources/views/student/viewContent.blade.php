@@ -3,7 +3,7 @@
 @section('content')
     <div class="unique-color-dark">
         <div class="container p-5">
-            <video autoplay id="player" controls style="max-height: 100% !important;">
+            <video id="player" controls style="max-height: 100% !important;">
                 <source src="{{ route('video',['id' => $id ,'token' => $token]) }}" type="video/mp4" />
             </video>
         </div>

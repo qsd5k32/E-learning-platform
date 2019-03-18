@@ -14,31 +14,27 @@
                 <i class="fas fa-address-card prefix"></i>
                 <input type="text" id="id_national" required class="form-control" name="identity_national_number" value="@if(!empty($details->identity_national_number)){{ $details->identity_national_number }}@endif">
                 <label for="id_national">National identity number</label>
-                @if ($errors->has('username'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('username') }}</strong>
-                    </span>
-                @endif
+            </div>
+            <div class="md-form">
+                <i class="fas fa-birthday-cake prefix"></i>
+                <input placeholder="Selected date" required type="text"  data-value="@if(!empty($details->birthday)){{ $details->birthday }}@endif" name="birthday" id="date-picker" class="form-control datepicker">
+                <label for="date-picker">Birthday</label>
+            </div>
+            <div class="md-form">
+                <i class="fas fa-map-marker prefix"></i>
+                <input type="text" id="birthday_place" required class="form-control" name="birthday_place" value="@if(!empty($details->birthday_place)){{ $details->birthday_place }}@endif">
+                <label for="birthday_place">birthday place</label>
             </div>
             <div class="md-form">
                 <i class="fas fa-mobile-alt prefix"></i>
                 <input type="tel" id="phoneNumber" name="phone_number" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="@if(!empty($details->phone_number)){{ $details->phone_number }}@endif" >
                 <label for="phoneNumber">phone number (optional)</label>
-                @if ($errors->has('name'))
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
+
             </div>
             <div class="md-form">
                 <i class="fas fa-map-marked-alt prefix"></i>
                 <input type="text" id="address" name="address" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" value="@if(!empty($details->address)){{ $details->address }}@endif" >
                 <label for="address">Address (optional)</label>
-                @if ($errors->has('name'))
-                    <span class="invalid-feedback" role="alert">
-                         <strong>{{ $errors->first('name') }}</strong>
-                    </span>
-                @endif
             </div>
             <div class="file-field">
                 <div class="btn btn-primary btn-sm float-left">
@@ -70,5 +66,28 @@
                 </ul>
             </div>
         @endif
+
     </div>
+@endsection
+@section('scripts')
+    <script defer>
+        $(document).ready(function() {
+            @if(Session::has('warning'))
+            toastr.warning('{{ Session::get('warning') }}');
+            @endif
+            @if(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+            @endif
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    toastr.error('{{ $error }}');
+                @endforeach
+            @endif
+            $('.datepicker').pickadate({
+                today: '',
+                min: [1962,1,1],
+                max: [2002,1,1]
+            });
+        });
+    </script>
 @endsection

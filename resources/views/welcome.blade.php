@@ -10,10 +10,10 @@
         <div class="container pt-5">
 
             <!--Grid row-->
-            <div class="row wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+            <div class="row wow fadeIn " style="visibility: visible; animation-name: fadeIn;">
 
                 <!--Grid column-->
-                <div class="col-md-6 mb-4 white-text text-center text-md-left">
+                <div class="col-md-6 mb-4 white-text text-center text-md-left align-self-center">
 
                     <h1 class="display-4 font-weight-bold">Learn English with us</h1>
 
@@ -35,7 +35,7 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-md-6 col-xl-5 mb-4">
+                <div class="col-md-6 col-xl-5 mb-4 align-self-center">
 
                     <!--Card-->
                     <div class="card shadow">
@@ -48,48 +48,48 @@
                                 @csrf
 
                                 <div class="md-form">
-                                    <i class="fas fa-user prefix white-text"></i>
-                                    <input type="text" id="username" class="form-control" name="username" value="{{ old('username') }}">
+                                    <i class="fas fa-user prefix"></i>
+                                    <input type="text" id="username" required class="form-control" name="username" value="{{ old('username') }}">
                                     <label for="username">Username</label>
                                     @if ($errors->has('username'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('username') }}</strong>
-                                    </span>
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('username') }}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-signature prefix white-text"></i>
+                                    <i class="fas fa-signature prefix"></i>
                                     <input type="text" id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required >
                                     <label for="name">{{ __('Name') }}</label>
                                     @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('name') }}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-at prefix white-text"></i>
+                                    <i class="fas fa-at prefix"></i>
                                     <input type="email" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required >
                                     <label for="email">{{ __('E-Mail Address') }}</label>
                                     @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('email') }}
+                                        </div>
                                     @endif
                                 </div>
                                 <div class="md-form">
-                                    <i class="fas fa-lock prefix white-text"></i>
+                                    <i class="fas fa-lock prefix"></i>
                                     <input type="password" id="password" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required >
                                     <label for="password">{{ __('Password') }}</label>
                                     @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('password') }}
+                                        </div>
                                     @endif
                                 </div>
 
                                 <div class="md-form">
-                                    <i class="fas fa-lock prefix white-text"></i>
+                                    <i class="fas fa-lock prefix"></i>
                                     <input type="password" id="password-confirm" class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" name="password_confirmation" required >
                                     <label for="password-confirm">{{ __('Confirm Password') }}</label>
 

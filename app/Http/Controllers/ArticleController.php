@@ -6,7 +6,7 @@ use App\Article;
 use Illuminate\Http\Request;
 use App\Http\Controllers\paymentController;
 
-class articleController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class articleController extends Controller
 
         paymentController::check($token);
 
-        $article = Article::find($id)->first();
+        $article = Article::where('id',$id)->first();
         return view('student.article',['article' => $article]);
     }
 

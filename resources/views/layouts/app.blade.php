@@ -84,6 +84,9 @@
             <li class="nav-item">
                <a class="nav-link" href="#">Our team</a>
             </li>
+            <li class="nav-item">
+                 <a class="nav-link" href="{{ route('contact') }}">Contact us</a>
+            </li>
             @else
               <!-- some links  -->
             @endguest
