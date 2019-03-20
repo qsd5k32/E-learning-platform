@@ -61,7 +61,7 @@ class paymentController extends Controller
             'prove' => 'required|mimes:jpg,jpeg,png'
         ]);
         $prove = $request->file('prove');
-        $payment_prove = Storage::put('proves', $prove);
+        $payment_prove = Storage::put('public/proves', $prove);
         Enrolment::where([
             'student_id' => Auth::id(),
             'course_id' => $course_id,

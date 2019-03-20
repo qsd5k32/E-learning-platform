@@ -31,15 +31,4 @@ class FileController extends Controller
         ]);
 
     }
-    public function paymentProve($id)
-    {
-        $fileUrl = Enrolment::where('id' , $id)->value('payment_Prove');
-        $mime = mime_content_type(storage_path("app/".$fileUrl));
-
-        $file = Storage::get($fileUrl);
-        $type = Storage::mimeType($fileUrl);
-        $response = Response::make($file, 200)->header("Content-Type", $type);
-        return $response;
-
-    }
 }

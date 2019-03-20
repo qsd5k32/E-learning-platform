@@ -26,8 +26,8 @@
                 <td>{{ $enroll->username }}</td>
                 <td>{{ $enroll->email }}</td>
                 <td>{{ $enroll->name }}</td>
-                <td><a href="{{ route('paymentProve',['id' => $enroll->id]) }}">Prove</a></td>
-                <td><a class="btn btn-primary btn-sm btn-rounded text-small" href="{{ route('payment',['id' => $enroll->id , 'c_id' => $enroll->course_id]) }}">Approve</a></td>
+                <td><a href="{{ Storage::url($enroll->payment_prove) }}" target="_blank">Prove</a></td>
+                <td><a class="btn btn-primary btn-sm btn-rounded text-small" href="{{ route('payment',['id' => $enroll->id]) }}">Approve</a></td>
             </tr>
         @endforeach
         </tbody>

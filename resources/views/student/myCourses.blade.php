@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container pt-5">
+    <div class="view container pt-5">
         <!-- Section heading -->
-        <h2 class="text-center"><strong>your courses</strong></h2>
+        <h2 class="text-center mt-5"><strong>your courses</strong></h2>
         <p class="grey-text w-responsive mx-auto mb-5 text-center">your courses </p>
 
         <!-- Grid row -->

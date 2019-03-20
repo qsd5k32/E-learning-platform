@@ -13,8 +13,13 @@
 // welcome page
 Route::get('/', function () { return view('welcome'); })->middleware('guest');
 Route::get('/test', function () { return view('test'); });
+
+// contact routes
 Route::get('/contact','ContactController@index')->name('contact')->middleware('guest');
 Route::post('/contact','ContactController@create')->name('sendContact')->middleware('guest');
+
+// blog routes
+Route::get('/blog','PostController@index')->name('blog');
 
 
 // Auth pages
@@ -77,8 +82,12 @@ Route::group(['middleware' => ['verified','teacher','auth']], function () {
 
 // admin permission
 Route::group(['middleware' => ['verified','admin','auth']], function () {
+
     Route::get('/admin/index','adminController@index')->name('adminPage');
     Route::get('/admin/payment/{id}','adminController@payment')->name('payment');
-    Route::get('/admin/payment/prove/{id}','FileController@paymentProve')->name('paymentProve');
+    // blog
+    Route::get('/admin/blog', function () { return view('admin.blog'); })->name('AdminBlog');
+    Route::get('/admin/blog/create', 'PostController@create');
+
 
 });

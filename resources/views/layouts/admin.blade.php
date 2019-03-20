@@ -34,17 +34,19 @@
             <!-- Side navigation links -->
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-tachometer-alt"></i>
-                            Courses<i class="fas fa-angle-down rotate-icon"></i></a>
+                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i class=" fas fa-money-bill-alt"></i>
+                            Payment</a></li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-blog"></i>
+                            Blog<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="{{ route('createCourse') }}" class="waves-effect">Create course</a></li>
-                                <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">My courses</a></li>
+                                <li><a href="{{ route('createCourse') }}" class="waves-effect">Create post</a></li>
+                                <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">Edit Or Delete</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="../sections/sections.html" class="collapsible-header waves-effect"><i class=" fas fa-th-large"></i>
-                            Sections</a></li>
+                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i class=" fas fa-money"></i>
+                            Payment</a></li>
 
                 </ul>
             </li>
