@@ -12,105 +12,38 @@
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
             <!-- Grid row -->
-            <div class="row">
+            @foreach($posts as $post)
+                <div class="col-lg-7">
 
-                <!-- Grid column -->
-                <div class="col-lg-5 col-xl-4">
-
-                    <!-- Featured image -->
-                    <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Sample image">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-7 col-xl-8">
-
+                    <!-- Category -->
+                    <a href="#!" class="{{ $post->color }}">
+                        <h6 class="font-weight-bold mb-3"><i class="{{ $post->icon }} pr-2"></i>{{ $post->name }}</h6>
+                    </a>
                     <!-- Post title -->
-                    <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
+                    <h3 class="font-weight-bold mb-3"><strong>{{ $post->title }}</strong></h3>
                     <!-- Excerpt -->
-                    <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-                        quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus
-                        et aut officiis debitis cum soluta nobis est eligendi placeat facere aut rerum.</p>
+                    <p>{{ strip_tags($post->content) }}</p>
                     <!-- Post data -->
-                    <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
+                    <p>by <a><strong>{{ $post->username }}</strong></a>, {{ $post->created_at->format('d/m/y') }}</p>
                     <!-- Read more button -->
-                    <a class="btn btn-primary btn-md">Read more</a>
+                    <a class="btn btn-{{ explode('-',$post->color)[1] }} btn-md" href="{{ route('postView' ,['id' => $post->id]) }}">Read more</a>
 
                 </div>
-                <!-- Grid column -->
+                <hr class="my-5">
+            @endforeach
 
-            </div>
-            <!-- Grid row -->
-
-            <hr class="my-5">
-
-            <!-- Grid row -->
-            <div class="row">
-                <div class="col-12">
-
-                    <!-- Post title -->
-                    <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
-                    <!-- Excerpt -->
-                    <p class="dark-grey-text">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                        praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                        cupiditate non provident et accusamus iusto odio dignissimos et dolorum fuga.</p>
-                    <!-- Post data -->
-                    <p>by <a class="font-weight-bold">Jessica Clark</a>, 16/04/2018</p>
-                    <!-- Read more button -->
-                    <a class="btn btn-primary btn-md">Read more</a>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
-
-            <hr class="my-5">
-
-            <!-- Grid row -->
-            <div class="row">
-
-                <!-- Grid column -->
-                <div class="col-lg-5 col-xl-4">
-
-                    <!-- Featured image -->
-                    <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/52.jpg" alt="Sample image">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-
-                </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-lg-7 col-xl-8">
-
-                    <!-- Post title -->
-                    <h3 class="font-weight-bold mb-3"><strong>Title of the news</strong></h3>
-                    <!-- Excerpt -->
-                    <p class="dark-grey-text">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed
-                        quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est,
-                        qui dolorem ipsum quia dolor sit amet, psam voluptatem quia consectetur.</p>
-                    <!-- Post data -->
-                    <p>by <a class="font-weight-bold">Jessica Clark</a>, 12/04/2018</p>
-                    <!-- Read more button -->
-                    <a class="btn btn-primary btn-md">Read more</a>
-
-                </div>
-                <!-- Grid column -->
-
-            </div>
-            <!-- Grid row -->
 
         </section>
         <!-- Section: Blog v.3 -->
     </div>
+@endsection
+@section('links')
+    <style>
+        .media{
+            width: 100%;
+        }
+        .media > * {
+            width:100%;
+        }
+    </style>
 @endsection

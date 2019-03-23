@@ -14,7 +14,6 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //@TODO create article view page
     public function index($id ,$token)
     {
 

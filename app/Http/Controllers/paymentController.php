@@ -31,11 +31,11 @@ class paymentController extends Controller
         }
         if(empty($enrollData->value('token_key')))
         {
-            return abort(403,'Payment problem');
+            return abort(403,'pleas wait while we accept your payment');
         }
         if($enrollData->count() == 0)
         {
-            return abort(403,'Payment problem');
+            return abort(403,"it's look like you are not enrolled");
         }
     }
 
@@ -68,7 +68,7 @@ class paymentController extends Controller
         ])->update([
             'payment_prove' => $payment_prove
         ]);
-        return view('message.success',['message' => 'your prove was send with success pleas wait the admin to accept it in 24h']);
+        return response()->view('message.success',['message' => 'your prove was send with success pleas wait the admin to accept it in 24h']);
     }
 
 }

@@ -25,13 +25,15 @@
                             </a>
                         @else
                             @if(empty($enrollment))
-                                <a class="btn btn-default  waves-effect waves-light" href="{{ route('enroll',['course_id' => $course->course_id]) }}">
+                                <a class="btn btn-default  waves-effect waves-light"
+                                   href="{{ route('enroll',['course_id' => $course->course_id]) }}">
                                     <i class="fas fa-plus left"></i>
                                     <span class="hidden-md-down ">Enroll now</span>
                                 </a>
                                 <span class="counter ">{{ $students }}</span>
                             @else
-                                <a class="btn btn-default  waves-effect waves-light" href="{{ route('playlist',['id' => $course->course_id]) }}">
+                                <a class="btn btn-default  waves-effect waves-light"
+                                   href="{{ route('playlist',['id' => $course->course_id]) }}">
                                     <i class="fas fa-book-open left"></i>
                                     <span class="hidden-md-down "> view course</span>
                                 </a>
@@ -65,7 +67,8 @@
 
                             <!--Card image-->
                             <div class="view overlay">
-                                <img src="@if(!empty($author->photo)) {{ asset('uploads') . '/' . $author->photo }} @else {{ asset('uploads/profile.svg') }} @endif" class="card-img-top" alt="">
+                                <img src="@if(!empty($author->photo)) {{ asset('uploads') . '/' . $author->photo }} @else {{ asset('uploads/profile.svg') }} @endif"
+                                     class="card-img-top" alt="">
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
@@ -107,7 +110,8 @@
 
                                         <!--Card image-->
                                         <div class="view overlay">
-                                            <img src="{{ asset('uploads/') .'/'.$course->cover_url }}" class="img-fluid w-100" alt="{{ $course->name }}">
+                                            <img src="{{ asset('uploads/') .'/'.$course->cover_url }}"
+                                                 class="img-fluid w-100" alt="{{ $course->name }}">
                                             <a>
                                                 <div class="mask rgba-white-slight"></div>
                                             </a>
@@ -124,8 +128,8 @@
                                             <!--Text-->
                                             <p class="dark-grey-text mb-3 mt-4 mx-4">{!! $course->description !!}</p>
                                             <hr>
-                                            <p class="text-success mb-3 mt-4 mx-4"><strong class="grey-text">Price : </strong> {{ $course->price }} DZD</p>
-
+                                            <p class="text-success mb-3 mt-4 mx-4"><strong class="grey-text">Price
+                                                    : </strong> {{ $course->price }} DZD</p>
 
 
                                         </div>
@@ -157,4 +161,12 @@
     <!--Blog section-->
 @endsection
 
-
+@section('scripts')
+    <script defer>
+        $(document).ready(function () {
+            @if(Session::has('success'))
+                toastr.success('{{ Session::get('success') }}');
+            @endif
+        });
+    </script>
+@endsection

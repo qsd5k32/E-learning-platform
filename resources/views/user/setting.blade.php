@@ -7,12 +7,14 @@
             @csrf
             <div class="md-form">
                 <i class="fas fa-signature prefix"></i>
-                <input type="text" id="name" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}" value="">
+                <input type="text" id="name" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}"
+                       value="">
                 <label for="name">{{ __('Name') }}</label>
             </div>
             <div class="md-form">
                 <i class="fas fa-address-card prefix"></i>
-                <input type="text" id="id_national" required class="form-control" name="identity_national_number" value="">
+                <input type="text" id="id_national" required class="form-control" name="identity_national_number"
+                       value="">
                 <label for="id_national">Email</label>
             </div>
 

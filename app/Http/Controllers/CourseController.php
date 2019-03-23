@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Course;
-use DB;
 use Auth;
+use DB;
 use Illuminate\Http\Request;
 
 class courseController extends Controller

@@ -14,7 +14,8 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/mdb.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     @yield('links')
 </head>
 <body class="fixed-sn white-skin">
@@ -34,18 +35,20 @@
             <!-- Side navigation links -->
             <li>
                 <ul class="collapsible collapsible-accordion">
-                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i class=" fas fa-money-bill-alt"></i>
+                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i
+                                    class=" fas fa-money-bill-alt"></i>
                             Payment</a></li>
                     <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-blog"></i>
                             Blog<i class="fas fa-angle-down rotate-icon"></i></a>
                         <div class="collapsible-body">
                             <ul>
-                                <li><a href="{{ route('createCourse') }}" class="waves-effect">Create post</a></li>
+                                <li><a href="{{ route('adminBlog') }}" class="waves-effect">Create post</a></li>
                                 <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">Edit Or Delete</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i class=" fas fa-money"></i>
+                    <li><a href="{{ route('adminPage') }}" class="collapsible-header waves-effect"><i
+                                    class=" fas fa-money"></i>
                             Payment</a></li>
 
                 </ul>
@@ -72,15 +75,21 @@
             @guest
             @else
                 <li class="nav-item avatar dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown" aria-haspopup="true"
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
+                       aria-haspopup="true"
                        aria-expanded="false">
-                        <img src="@if(!empty(Auth::user()->detail->photo)) {{ asset('uploads') . '/' . Auth::user()->detail->photo }} @else {{ asset('uploads/profile.svg') }} @endif" class="rounded-top rounded-bottom z-depth-0" style="width:35px; height: 35px" alt="avatar image">
+                        <img src="@if(!empty(Auth::user()->detail->photo)) {{ asset('uploads') . '/' . Auth::user()->detail->photo }} @else {{ asset('uploads/profile.svg') }} @endif"
+                             class="rounded-top rounded-bottom z-depth-0" style="width:35px; height: 35px"
+                             alt="avatar image">
                         {{ Auth::user()->username }}
                     </a>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-55">
-                        <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i>  My account</a>
-                        <a class="dropdown-item" href="{{ url('account/setting') }}"><i class="fas fa-cog"></i>  Setting</a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-info"
+                         aria-labelledby="navbarDropdownMenuLink-55">
+                        <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i> My
+                            account</a>
+                        <a class="dropdown-item" href="{{ url('account/setting') }}"><i class="fas fa-cog"></i> Setting</a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"><i
+                                    class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
                     </div>
                 </li>
             @endguest

@@ -17,6 +17,7 @@ class Courses extends Migration
             $table->increments('course_id');
             $table->string('name');
             $table->longText('description');
+            $table->string('category');
             $table->unsignedInteger('author_id');
             $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('cover_url');
