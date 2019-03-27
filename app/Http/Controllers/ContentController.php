@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\playlist;
 use App\Article;
+use App\Section;
 use Auth;
 use Illuminate\Http\Request;
 use Storage;
@@ -46,13 +47,17 @@ class contentController extends Controller
    public function add($id)
    {
        $this->checkId($id);
-       return view('teacher.addCourse');
+       $sections = Section::where('course_id',$id)->get();
+       return view('teacher.addCourse',['sections' => $sections]);
    }
 
 
   // validate data
    private function validateCourseData($request){
-    if(empty($this->type)) $this->type = $request->input('contentType');
+    if(!empty($this->type))
+    {
+        $this->type = $request->input('contentType');
+    }
     switch ($this->type){
         case 1:
             $this->mime = 'required|mimes:doc,pdf,docx,zip';
@@ -66,6 +71,8 @@ class contentController extends Controller
     }
        $request->validate([
 			'courseTitle' => 'required',
+			'type' => 'required',
+			'section' => 'required',
 			'coursePath'=> $this->mime,
             'articleContent' => $this->content
 		]);
@@ -96,8 +103,9 @@ class contentController extends Controller
             break;
     }
     // insert data to databases
-		Playlist::insert([
+		playlist::create([
         'course_id' => $this->name,
+        'section' => $request->input('section'),
         'course_name' => $this->title,
         'course_url' => $this->url,
         'type' => $type,
@@ -121,8 +129,9 @@ class contentController extends Controller
             'updated_at' => date('Y-m-d H:i:s')
         ]);
 
-        Playlist::insert([
+        Playlist::create([
             'course_id' => $this->name,
+            'section' => $request->input('section'),
             'course_name' => $this->title,
             'course_url' => $article->id,
             'type' => $request->input('contentType'),
@@ -134,10 +143,18 @@ class contentController extends Controller
 
     public function set(Request $request,$id)
     {
+        $this->validateCourseData($request);
         $type = $request->input('contentType');
-        if($type == 1 or $type == 2){ $this->addFile($id,$request);}
-        if($type == 3){ $this->addArticle($id,$request);}
-        return back()->with(['success' => 'your content was add with success']);
+        if($type == 1 or $type == 2)
+        {
+            $this->addFile($id,$request);
+            return back()->with(['success' => 'your file was add with success']);
+        }
+        if($type == 3){
+            $this->addArticle($id,$request);
+            return back()->with(['success' => 'your article was add with success']);
+        }
+        return back()->with(['warning' => 'your content was add with success']);
     }
 
     // edit Contents
@@ -197,7 +214,6 @@ class contentController extends Controller
     // delete content
     public function delete($id)
     {
-        $playlist = playlist::where('course_id',$id)->get();
         playlist::find($id)->delete();
         return back()->with('success','your content was move to trash');
     }

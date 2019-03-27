@@ -23,7 +23,7 @@ class AccountController extends Controller
     {
         //return var_dump($request->file('photoPath'));
         $request->validate([
-            'identity_national_number' => 'required|integer',
+            'identity_national_number' => 'required|numeric',
             'phone_number' => 'numeric|min:10|nullable',
             'address' => 'string|nullable',
             'photoPath' => 'image|mimes:jpeg,png,jpg,gif,svg|nullable',

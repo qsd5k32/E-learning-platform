@@ -170,3 +170,13 @@
         });
     </script>
 @endsection
+@section('links')
+    <style>
+        .media{
+            width: 100%;
+        }
+        .media > * {
+            width:100%;
+        }
+    </style>
+@endsection

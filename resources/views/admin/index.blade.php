@@ -70,9 +70,6 @@
             $('#dtMaterialDesignExample_wrapper select').addClass('mdb-select');
             $('#dtMaterialDesignExample_wrapper .mdb-select').materialSelect();
             $('#dtMaterialDesignExample_wrapper .dataTables_filter').find('label').remove();
-            @if(Session::has('success'))
-                toastr.success('{{ Session::get('success') }}');
-            @endif
         });
     </script>
 

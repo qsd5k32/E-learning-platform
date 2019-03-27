@@ -43,7 +43,16 @@
                         <div class="collapsible-body">
                             <ul>
                                 <li><a href="{{ route('adminBlog') }}" class="waves-effect">Create post</a></li>
-                                <li><a href="{{ route('coursesTeacher') }}" class="waves-effect">Edit Or Delete</a></li>
+                                <li><a href="{{ route('editPost') }}" class="waves-effect">Edit Or Delete</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-envelope"></i>
+                            Contact<i class="fas fa-angle-down rotate-icon"></i></a>
+                        <div class="collapsible-body">
+                            <ul>
+                                <li><a href="{{ route('listContact') }}" class="waves-effect">Reply</a></li>
+                                <li><a href="{{ route('editPost') }}" class="waves-effect">Send Mail list</a></li>
                             </ul>
                         </div>
                     </li>
@@ -129,5 +138,26 @@
 <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 @yield('scripts')
+<script defer>
+    $(document).ready(function () {
+        @if(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+        @if(Session::has('warning'))
+        toastr.warning('{{ Session::get('warning') }}');
+        @endif
+        @if(Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @endif
+        @if(Session::has('info'))
+        toastr.info('{{ Session::get('info') }}');
+        @endif
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+    });
+</script>
 </body>
 </html>

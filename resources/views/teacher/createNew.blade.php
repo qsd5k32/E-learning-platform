@@ -6,12 +6,19 @@
         <form enctype="multipart/form-data" autocomplete="off" class="text-center md-form" style="color: #757575;"
               method="POST">
         @csrf
-        <!-- Email -->
+
             <div class="md-form">
                 <input type="text" id="materialLoginFormEmail" class="form-control" name="courseTitle">
                 <label for="materialLoginFormEmail">Course title</label>
             </div>
-            <!-- Password -->
+
+            <select class="mdb-select md-form" name="category">
+                <option value="" disabled selected>Choose your category</option>
+                @foreach($category as $cat)
+                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                @endforeach
+            </select>
+
             <div class="md-form">
                 <textarea type="text" name="courseDescription" id="editor" class="md-textarea form-control"
                           rows="3"></textarea>
@@ -45,6 +52,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
     <script defer>
         $(document).ready(function () {
+            $('.mdb-select').materialSelect();
             @if(Session::has('success'))
             toastr.warning('{{ Session::get('success') }}');
             @endif

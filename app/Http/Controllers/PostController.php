@@ -84,9 +84,10 @@ class PostController extends Controller
      * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit()
     {
-        //
+        $posts = Post::all();
+        return view('admin.editBlog',['posts' => $posts]);
     }
 
     /**
@@ -96,19 +97,36 @@ class PostController extends Controller
      * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update($id)
     {
-        //
+        $category = Category::all();
+        $post = Post::where('id',$id)->first();
+        return view('admin.createBlog',['post' => $post,'category' => $category]);
     }
 
+    public function setUpdate($id,Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string',
+            'content' => 'required',
+            'category' => 'required'
+        ]);
+        Post::where('id',$id)->update([
+            'title' => $request->input('title'),
+            'content' => $request->input('content'),
+            'category' => $request->input('category'),
+        ]);
+        return back()->with(['success' => 'yor post was updated with success']);
+    }
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Post $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::where('id',$id)->delete();
+        return back()->with(['success' => 'your post was deleted with success']);
     }
 }

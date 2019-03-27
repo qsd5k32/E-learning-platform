@@ -126,5 +126,26 @@
 <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 @yield('scripts')
+<script defer>
+    $(document).ready(function () {
+        @if(Session::has('success'))
+        toastr.success('{{ Session::get('success') }}');
+        @endif
+        @if(Session::has('warning'))
+        toastr.warning('{{ Session::get('warning') }}');
+        @endif
+        @if(Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @endif
+        @if(Session::has('info'))
+        toastr.info('{{ Session::get('info') }}');
+        @endif
+        @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        toastr.error('{{ $error }}');
+        @endforeach
+        @endif
+    });
+</script>
 </body>
 </html>

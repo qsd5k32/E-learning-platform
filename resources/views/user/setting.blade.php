@@ -6,16 +6,28 @@
         <form method="POST" enctype="multipart/form-data" class="md-form" autocomplete="off">
             @csrf
             <div class="md-form">
-                <i class="fas fa-signature prefix"></i>
-                <input type="text" id="name" class="form-control {{ $errors->has('username') ? ' is-invalid' : '' }}"
-                       value="">
-                <label for="name">{{ __('Name') }}</label>
+                <i class="fas fa-at prefix text-muted"></i>
+                <input type="email" id="id_national" disabled class="form-control"
+                       value="{{ $user->email }}">
+                <label for="id_national">Email</label>
+            </div>
+            <hr>
+            <h4>Change password</h4>
+            <div class="md-form">
+
+                <input type="password" id="actual_password" name="actual_password" required class="form-control">
+                <label for="actual_password">Actual password</label>
             </div>
             <div class="md-form">
-                <i class="fas fa-address-card prefix"></i>
-                <input type="text" id="id_national" required class="form-control" name="identity_national_number"
-                       value="">
-                <label for="id_national">Email</label>
+
+                <input type="password" id="new_password" name="password" required class="form-control">
+                <label for="new_password">new Password</label>
+            </div>
+            <div class="md-form">
+
+                <input type="password" id="password_confirmation" name="password_confirmation" required
+                       class="form-control">
+                <label for="password_confirmation">Confirm password</label>
             </div>
 
             <div class="form-group mb-3 mt-2">
@@ -25,13 +37,9 @@
             </div>
         </form>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
         @endif
     </div>
 @endsection

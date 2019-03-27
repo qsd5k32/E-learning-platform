@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Enrolment;
 use Auth;
+use Illuminate\Support\Facades\Session;
+use App\Mail\EnrollMail;
+use Illuminate\Support\Facades\Mail;
 
 class EnrollController extends Controller
 {
@@ -14,8 +17,13 @@ class EnrollController extends Controller
                 'student_id' => Auth::id(),
                 'course_id' => $course_id,
             ]);
-            return back()->with(['success' => 'you enrolled with success']);
+
+            Mail::to(Auth::user()->email)->send(new EnrollMail('thanks for enrollment' , 1));
+            Session::flash('success','you enrolled with success');
+            return view('message.methodPayment' , ['course_id' => $course_id] , ['success' => 'you enrolled with success']);
+            //response()->with(['success' => 'you enrolled with success']);
         }
+
         return response()->view('message.methodPayment');
     }
 

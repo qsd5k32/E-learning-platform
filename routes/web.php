@@ -11,12 +11,9 @@
 |
 */
 // welcome page
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('guest');
-Route::get('/test', function () {
-    return view('test');
-});
+Route::get('/', 'HomeController@welcome')->middleware('guest');
+Route::get('/test', 'HomeController@test');
+
 
 // contact routes
 Route::get('/contact', 'ContactController@index')->name('contact')->middleware('guest');
@@ -35,14 +32,20 @@ Route::get('/course/info/{id}', 'CoursesController@moreInfo')->name('courseInfo'
 // courses list
 Route::get('/courses', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
+// public chat
+Route::get('/chatPublic', 'PublicChatController@index')->name('chatPublic');
+Route::post('/chatPublic/add', 'PublicChatController@create')->name('addChat');
 
+
+
+// ###############"[ routes groups }##################""""
 //routes need auth and verified permissions
 Route::group(['middleware' => ['verified', 'auth']], function () {
     // save Account details
-    Route::get('/account/details', 'AccountController@index');
+    Route::get('/account/details', 'AccountController@index')->name('account');
     Route::post('/account/details', 'AccountController@setData');
     Route::get('/account/setting', 'settingController@index');
-    Route::post('/account/setting', 'settingController@setData');
+    Route::post('/account/setting', 'settingController@update');
     // enroll to course
     Route::get('/enroll/{course_id}', 'EnrollController@enroll')->name('enroll');
     // send prove
@@ -51,13 +54,13 @@ Route::group(['middleware' => ['verified', 'auth']], function () {
     Route::get('/course/playlist/{id}', 'CoursesController@viewPlaylist')->name('playlist')->middleware('details');
     Route::get('/myCourses', 'EnrollController@myCourses')->name('myCourses');
     // view video
-    Route::get('/course/playlist/video/{id}/{token}', 'CoursesController@viewCourse')->name('view');
+    Route::get('/course/playlist/video/{id}/{course_id}/{token}', 'CoursesController@viewCourse')->name('view');
     // video source
     Route::get('/video/{id}/{token}', 'videoController@url')->name('video');
     // article content view
-    Route::get('/course/playlist/article/{id}/{token}', 'ArticleController@index')->name('article');
+    Route::get('/course/playlist/article/{id}/{course_id}/{token}', 'ArticleController@index')->name('article');
     // file content view
-    Route::get('/course/playlist/file/{id}/{token}', 'FileController@download')->name('file');
+    Route::get('/course/playlist/file/{id}/{course_id}/{token}', 'FileController@download')->name('file');
 });
 
 // teacher permission
@@ -82,6 +85,10 @@ Route::group(['middleware' => ['verified', 'teacher', 'auth']], function () {
     // edit course
     Route::get('/course/edit/{id}', 'CourseController@updateCourse')->name('editCourse');
     Route::post('/course/edit/{id}', 'CourseController@update');
+    // add section
+    Route::post('/section/add/', 'SectionController@create')->name('createSection');
+    Route::get('/section/delete/{id}', 'SectionController@destroy')->name('deleteSection');
+
 });
 
 // admin permission
@@ -92,6 +99,15 @@ Route::group(['middleware' => ['verified', 'admin', 'auth']], function () {
     // blog
     Route::get('/admin/blog','PostController@createView')->name('adminBlog');
     Route::post('/admin/blog/create', 'PostController@create')->name('createPost');
+    Route::get('/admin/blog/edit', 'PostController@edit')->name('editPost');
+    // destroy post
+    Route::get('/admin/blog/delete/{id}', 'PostController@destroy')->name('deletePost');
+    // update posts
+    Route::get('/admin/blog/update/{id}', 'PostController@update')->name('updatePost');
+    Route::post('/admin/blog/update/{id}', 'PostController@setUpdate')->name('setUpdatePost');
+    // Contacts
+    Route::get('/admin/contact/list/', 'ContactController@viewLists')->name('listContact');
+    Route::post('/admin/send/reply/{id}', 'ContactController@reply')->name('sendReply');
 
 
 });

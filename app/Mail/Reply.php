@@ -11,14 +11,16 @@ class Reply extends Mailable
 {
     use Queueable, SerializesModels;
 
+    protected $message;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($message)
     {
-        //
+        $this->message = $message;
+
     }
 
     /**
@@ -28,6 +30,8 @@ class Reply extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.reply');
+        return $this->from('sed75dik@gmail.com')
+            ->subject('reply')
+            ->markdown('emails.reply',['message' => $this->message]);
     }
 }

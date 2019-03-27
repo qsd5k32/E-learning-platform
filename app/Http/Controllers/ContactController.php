@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Contact;
 use Illuminate\Http\Request;
+use App\Mail\Reply;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -17,6 +19,11 @@ class ContactController extends Controller
         return view('contact');
     }
 
+    public function viewLists()
+    {
+        $contacts = Contact::all();
+        return view('admin.contact',['contacts' => $contacts]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -72,6 +79,20 @@ class ContactController extends Controller
         //
     }
 
+    public function reply($id,Request $request)
+    {
+        $request->validate([
+           'reply' => 'required'
+        ]);
+        $contact = Contact::find($id);
+
+        Mail::to($contact->email)->send(new Reply($request->input('reply')));
+        Contact::where('id',$id )->update([
+            'reply' => 1
+        ]);
+
+        return back()->with(['success' => 'reply sent with success']);
+    }
     /**
      * Update the specified resource in storage.
      *

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlaylistsTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,13 @@ class CreatePlaylistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('playlists', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('course_id');
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedInteger('section');
-            $table->foreign('section')->references('id')->on('sections')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('course_name');
-            $table->string('type')->comment('documents or video or article');
-            $table->string('course_url');
-            $table->softDeletes();
-            $table->timestamps();        });
+            $table->string('name');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -33,6 +29,6 @@ class CreatePlaylistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('playlists');
+        Schema::dropIfExists('sections');
     }
 }

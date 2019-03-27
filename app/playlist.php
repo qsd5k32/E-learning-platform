@@ -12,7 +12,7 @@ class playlist extends Model
     {
         return $this->hasMany('App\Course','course_id','course_id');
     }
-    protected $fillable = ['course_id', 'course_name', 'course_url'];
+    protected $fillable = ['course_id','section','type', 'course_name', 'course_url'];
     protected $dates = ['deleted_at'];
 
 }

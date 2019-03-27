@@ -85,10 +85,7 @@
                     <a class="nav-link" href="{{ url('/courses') }}">Courses</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Our team</a>
+                    <a class="nav-link" href="{{ url('/') }}">About us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Contact us</a>
@@ -106,8 +103,6 @@
                 <li class="nav-item">
                     <a class="nav-link waves-effect waves-light" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
-
-
 
             @else
                 <li class="nav-item">
@@ -158,7 +153,7 @@
 @yield('content')
 <footer class="page-footer font-small unique-color-dark">
 
-    <div style="background-color: #6351ce;">
+    <div class="info-color">
         <div class="container">
 
             <!-- Grid row-->
@@ -214,7 +209,7 @@
 
                 <!-- Content -->
                 <h6 class="text-uppercase font-weight-bold">Company name</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <hr class="info-color accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet,
                     consectetur
                     adipisicing elit.</p>
@@ -227,7 +222,7 @@
 
                 <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Products</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <hr class="info-color accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
                     <a href="#!">MDBootstrap</a>
                 </p>
@@ -249,18 +244,18 @@
 
                 <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Useful links</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <hr class="info-color accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
-                    <a href="#!">Your Account</a>
+                    <a href="{{ route('account') }}">Your Account</a>
                 </p>
                 <p>
-                    <a href="#!">Become an Affiliate</a>
+                    <a href="{{ route('home') }}">Courses</a>
                 </p>
                 <p>
-                    <a href="#!">Shipping Rates</a>
+                    <a href="{{ route('blog') }}">Blog</a>
                 </p>
                 <p>
-                    <a href="#!">Help</a>
+                    <a href="{{ route('chatPublic') }}">Chat</a>
                 </p>
 
             </div>
@@ -271,7 +266,7 @@
 
                 <!-- Links -->
                 <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <hr class="info-color accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>
                     <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
                 <p>
@@ -291,16 +286,37 @@
     <!-- Footer Links -->
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2018 Copyright:
-        <a href=""> E learn company </a>
+    <div class="footer-copyright text-center py-3">© 2019 Copyright :
+        <a href=""> {{ config('app.name') }} </a>
     </div>
     <!-- Copyright -->
 
 </footer>
-<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script defer type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 @yield('scripts')
+<script defer>
+    $(document).ready(function () {
+        @if(Session::has('success'))
+            toastr.success('{{ Session::get('success') }}');
+        @endif
+        @if(Session::has('warning'))
+            toastr.warning('{{ Session::get('warning') }}');
+        @endif
+        @if(Session::has('error'))
+        toastr.error('{{ Session::get('error') }}');
+        @endif
+        @if(Session::has('info'))
+            toastr.info('{{ Session::get('info') }}');
+        @endif
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                toastr.error('{{ $error }}');
+            @endforeach
+        @endif
+    });
+</script>
 </body>
 </html>

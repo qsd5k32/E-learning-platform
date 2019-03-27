@@ -31,7 +31,7 @@ class paymentController extends Controller
         }
         if(empty($enrollData->value('token_key')))
         {
-            return abort(403,'pleas wait while we accept your payment');
+            return abort(403,'We receive your prove please wait while we verify it');
         }
         if($enrollData->count() == 0)
         {

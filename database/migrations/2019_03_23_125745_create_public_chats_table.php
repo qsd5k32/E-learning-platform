@@ -17,9 +17,9 @@ class CreatePublicChatsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('sex');
-            $table->string('messanger');
-            $table->string('instagram');
-            $table->string('skype');
+            $table->string('messanger')->unique();
+            $table->string('instagram')->unique();
+            $table->string('skype')->unique();
             $table->string('level');
             $table->string('country');
             $table->string('topic');

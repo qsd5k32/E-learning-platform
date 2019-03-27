@@ -44,25 +44,16 @@
         </form>
         <hr>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
+
         @endif
     </div>
 @endsection
 @section('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
-    <script defer>
-        $(document).ready(function () {
-            @if(Session::has('success'))
-            toastr.success('{{ Session::get('success') }}');
-            @endif
-        });
-    </script>
     <script>
         ClassicEditor
             .create(document.querySelector('#editor'))

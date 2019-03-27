@@ -1,4 +1,4 @@
-@extends('layouts.teach')
+@extends('layouts.admin')
 
 @section('content')
     <div class="container p-5">
@@ -13,13 +13,13 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($playlist as $content)
+            @foreach($posts as $post)
                 <tr>
-                    <td>{{ $content->course_name }}</td>
+                    <td>{{ $post->title }}</td>
                     <td>
                         <div class="d-flex">
-                            <a class="ml-1 mr-1 red-text" href="{{ route('deleteContent',['id' => $content->id ]) }}"><i class="fas fa-trash"></i> Delete</a>
-                            <a class="ml-1 mr-1 blue-text" href="{{ route('updateContent',['id' => $content->id ]) }}"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="ml-1 mr-1 red-text" href="{{ route('deletePost',['id' => $post->id ]) }}"><i class="fas fa-trash"></i> Delete</a>
+                            <a class="ml-1 mr-1 blue-text" href="{{ route('updatePost' ,['id' => $post->id ]) }}"><i class="fas fa-edit"></i> Edit</a>
                         </div>
                     </td>
                 </tr>
@@ -38,13 +38,6 @@
 @endsection
 @section('scripts')
     <script src="{{ asset('js/addons/datatables.min.js') }}"></script>
-    <script defer>
-        $(document).ready(function() {
-            @if(Session::has('success'))
-            toastr.success('{{ Session::get('success') }}');
-            @endif
-        });
-    </script>
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
     <script>
         ClassicEditor

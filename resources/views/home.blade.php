@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="container pt-5">
         <!-- Section: Products v.2 -->
         <section class="text-center my-5">
@@ -33,13 +32,16 @@
                             <!-- Card content -->
                             <div class="card-body card-body-cascade text-center">
                                 <!-- Category & Title -->
+                                <a href="" class="{{ $course->color }}">
+                                    <h5><i class="{{ $course->icon }}"></i> {{ $course->category }}</h5>
+                                </a>
                                 <h4 class="card-title">
                                     <strong>
-                                        <a href="{{ route('courseInfo',['id' => $course->course_id]) }}">{{ $course->name}}</a>
+                                        <a href="{{ route('courseInfo',['id' => $course->course_id]) }}">{{ $course->course_name}}</a>
                                     </strong>
                                 </h4>
                                 <!-- Description -->
-                                <p class="card-text">{{ strip_tags(substr($course->description,0,140)) . ' ...' }}</p>
+                                <p class="card-text">{{ strip_tags(substr($course->description,0,150)) . ' ...' }}</p>
                                 <!-- Card footer -->
                                 <div class="card-footer px-1">
             <span class="float-left font-weight-bold">

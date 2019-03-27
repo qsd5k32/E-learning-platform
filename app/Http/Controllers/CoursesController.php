@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Course;
 use App\Enrolment;
 use App\playlist;
+use App\Section;
 use Illuminate\Support\Facades\Auth;
 
 class CoursesController extends Controller
 {
 
-
+    protected $token;
     // view course Information
     public function viewPlaylist($id)
     {
@@ -27,9 +28,9 @@ class CoursesController extends Controller
 
 
         $course = Course::where('course_id', $id)->first();
-        $playlist = playlist::where('course_id', $id)->get();
+        $sections = Section::where('course_id',$id)->get();
         return view('student.CoursePlaylist', [
-            'playlist' => $playlist,
+            'sections' => $sections,
             'course' => $course,
             'token' => $token
         ]);
@@ -48,11 +49,13 @@ class CoursesController extends Controller
         }
     }
 
-    public function viewCourse($id, $token)
+    public function viewCourse($id,$course_id, $token)
     {
         paymentController::check($token);
-        if (playlist::where('id', $id)->count() == 0) abort(404);
-        return view('student.viewContent', ['id' => $id, 'token' => $token]);
+        if (playlist::where(['id' => $id , 'course_id' => $course_id])->count() == 0) abort(404);
+        $playlist = playlist::where('course_id',$course_id)->get();
+        $sections = Section::where('course_id',$course_id)->get();
+        return view('student.viewContent', ['id' => $id, 'playlist' => $playlist,'sections' => $sections,'token' => $token]);
     }
 
     // view more info about course

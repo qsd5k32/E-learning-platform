@@ -2,7 +2,7 @@
 @section('content')
     <!-- Intro -->
     <div class="view intro-2"
-         style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/93.jpg'); background-repeat: no-repeat; background-size: cover;">
+         style="background-image: url('{{ asset('img/welcomeBackground.jpg') }}'); background-repeat: no-repeat; background-size: cover;">
 
         <!-- Mask & flexbox options-->
         <div class="align-items-center mask rgba-stylish-strong h-100 pb-5 pt-5 h-100">

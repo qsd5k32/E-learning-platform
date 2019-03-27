@@ -3,12 +3,13 @@
 @section('content')
     <div class="container p-5">
         <h2 class="text-center">Create new blog post</h2>
-        <form enctype="multipart/form-data" action="{{ route('createPost') }}" autocomplete="off"
+        <form enctype="multipart/form-data" action="@if(empty($post)){{ route('createPost') }}@else {{ route('setUpdatePost',['id' => $post->id]) }}@endif" autocomplete="off"
               class="text-center md-form" style="color: #757575;" method="POST">
-        @csrf
+            @csrf
 
             <div class="md-form">
-                <input type="text" id="materialLoginFormEmail" class="form-control" name="title">
+                <input type="text" id="materialLoginFormEmail" class="form-control" name="title"
+                       value="@if(!empty($post)) {{ $post->title }} @endif">
                 <label for="materialLoginFormEmail">Post title</label>
             </div>
 
@@ -20,39 +21,32 @@
             </select>
 
             <div class="md-form">
-                <textarea type="text" name="content" id="editor" class="md-textarea form-control" rows="3"></textarea>
+                <textarea type="text" name="content" id="editor" class="md-textarea form-control"
+                          rows="3">@if(!empty($post)) {{ $post->content }} @endif</textarea>
             </div>
 
             <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">
-                Create
+                @if(empty($post))Create @else Update @endif
             </button>
         </form>
         @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+            @endforeach
         @endif
     </div>
 @endsection
 @section('scripts')
     <script src="https://cdn.ckeditor.com/ckeditor5/12.0.0/classic/ckeditor.js"></script>
-    <script defer>
+
+    <script>
         $(document).ready(function () {
             $('.mdb-select').materialSelect();
-            @if(Session::has('success'))
-            toastr.success('{{ Session::get('success') }}');
-            @endif
         });
-    </script>
-    <script>
         ClassicEditor
-            .create(document.querySelector('#editor'),{
+            .create(document.querySelector('#editor'), {
                 mediaEmbed: {
-                    previewsInData : true,
+                    previewsInData: true,
                 }
             })
             .catch(error => {

@@ -11,15 +11,17 @@ class EnrollMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $data;
+    protected $message;
+    protected $course_id;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($data)
+    public function __construct($message , $course_id)
     {
-        $this->data = $data;
+        $this->message = $message;
+        $this->course_id = $course_id;
     }
 
     /**
@@ -29,7 +31,9 @@ class EnrollMail extends Mailable
      */
     public function build()
     {
-        //@TODO change emails
-        return $this->view('')->from('sed75dik@gmail.com');
+        return $this->from('sed75dik@gmail.com')
+            ->subject('you enrolled new course in axeLearn')
+            ->markdown('emails.enroll',
+                ['message' => $this->message , 'course_id' => $this->course_id]);
     }
 }

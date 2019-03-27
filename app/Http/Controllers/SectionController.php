@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\PublicChat;
+use App\Section;
 use Illuminate\Http\Request;
 
-class PublicChatController extends Controller
+class SectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,7 @@ class PublicChatController extends Controller
      */
     public function index()
     {
-        $chats = PublicChat::all();
-        return view('chatPublic',['chats' => $chats]);
+        //
     }
 
     /**
@@ -26,18 +25,11 @@ class PublicChatController extends Controller
     public function create(Request $request)
     {
         $data = $request->validate([
-            'name' => 'required|string',
-            'sex' => 'required|in:male,female',
-            'level' => 'required|in:Beginner,Intermediate,Pro',
-            'country' => 'required|string',
-            'messanger' => 'nullable',
-            'instagram' => 'nullable',
-            'skype' => 'nullable',
-            'topic' => 'required'
+            'name' => 'required',
+            'course_id' => 'required',
         ]);
-
-        PublicChat::create($data);
-        return back()->with(['success' => 'your information was saved with success you can chat now']);
+        Section::create($data);
+        return back()->with(['success' => 'your section was created with success']);
     }
 
     /**
@@ -54,10 +46,10 @@ class PublicChatController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\PublicChat  $publicChat
+     * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function show(PublicChat $publicChat)
+    public function show(Section $section)
     {
         //
     }
@@ -65,10 +57,10 @@ class PublicChatController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\PublicChat  $publicChat
+     * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function edit(PublicChat $publicChat)
+    public function edit(Section $section)
     {
         //
     }
@@ -77,10 +69,10 @@ class PublicChatController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\PublicChat  $publicChat
+     * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PublicChat $publicChat)
+    public function update(Request $request, Section $section)
     {
         //
     }
@@ -88,11 +80,12 @@ class PublicChatController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\PublicChat  $publicChat
+     * @param  \App\Section  $section
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PublicChat $publicChat)
+    public function destroy($id)
     {
-        //
+        Section::where('id',$id)->delete();
+        return back()->with(['success' => 'your section was deleted with success']);
     }
 }
