@@ -1,3 +1,6 @@
-*
-!public/
-!.gitignore
+
+public/*
+courses/*
+documents/*
+proves/*
+
