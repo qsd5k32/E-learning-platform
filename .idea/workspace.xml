@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a50e3f3a-f2e7-4cf8-85af-c5b95038bb04" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-    </list>
+    <list default="true" id="a50e3f3a-f2e7-4cf8-85af-c5b95038bb04" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -452,7 +450,7 @@
       <workItem from="1553646510296" duration="4737000" />
       <workItem from="1553725515773" duration="11797000" />
       <workItem from="1553905611646" duration="2948000" />
-      <workItem from="1555250004507" duration="355000" />
+      <workItem from="1555250004507" duration="1112000" />
     </task>
     <servers />
   </component>
@@ -474,7 +472,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="377876000" />
+    <option name="totallyTimeSpent" value="378633000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -487,9 +485,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1599" y="-4" width="1602" height="905" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974026" visible="true" weight="0.21915168" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974026" visible="true" weight="0.21915168" />
       <window_info id="Structure" order="1" sideWeight="0.5025974" side_tool="true" weight="0.36053985" />
       <window_info id="Favorites" order="2" sideWeight="0.5025974" side_tool="true" weight="0.31169665" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -501,7 +498,7 @@
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49871466" weight="0.32987013" />
       <window_info anchor="bottom" id="Database Changes" order="7" weight="0.32987013" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4993573" weight="0.32857144" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49871466" visible="true" weight="0.24285714" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49871466" visible="true" weight="0.24285714" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012854" side_tool="true" weight="0.24285714" />
       <window_info anchor="bottom" id="Database Console" order="11" weight="0.32876712" />
       <window_info anchor="bottom" id="Docker" order="12" show_stripe_button="false" />
