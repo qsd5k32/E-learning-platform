@@ -3,29 +3,107 @@
 <head>
 
     <meta charset="utf-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name="theme-color" content="#317EFB">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel='canonical' href='{{ url('/') }}'>
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='application-name' content='{{ config('app.name') }}'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="Description" content="E learning platform">
     <!-- CSRF Token -->
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- Scripts -->
-    <!-- Fonts -->
-    <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/mdb.min.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 
-    <style type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" media="all">
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/mdb.min.css') }}" media="all">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" media="all"
+              integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <style type="text/css" media="all">
         html,
         body,
         header,
         .view {
             height: 100%;
         }
+        /*    loader    */
+        .preloader {
+            z-index: 9999;
+            position: fixed;
+            background: #0b2a41;
+            width: 100%;
+            height: 100%;
+        }
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            z-index:3;
+            border: 4px solid #Fff;
+            top: 50%;
+            right: 50%;
+            animation: loader 2s infinite ease;
+        }
 
+        .loader-inner {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+            background-color: #fff;
+            animation: loader-inner 2s infinite ease-in;
+        }
+
+        @keyframes loader {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(180deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            75% {
+                transform: rotate(360deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes loader-inner {
+            0% {
+                height: 0%;
+            }
+
+            25% {
+                height: 0%;
+            }
+
+            50% {
+                height: 100%;
+            }
+
+            75% {
+                height: 100%;
+            }
+
+            100% {
+                height: 0%;
+            }
+        }
+        /*    loader    */
         @media (max-width: 740px) {
             html,
             body,
@@ -70,9 +148,15 @@
     @yield('links')
 </head>
 <body>
+<div class="preloader">
+    <span class="loader">
+        <span class="loader-inner"></span>
+    </span>
+</div>
+
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar">
     <a class="navbar-brand" href="{{ url('/') }}">
-        {{ config('app.name', 'Laravel') }}
+        <img src="{{ asset('img/axelearn.png') }}" height="30" alt="{{ config('app.name') }}">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
             aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,13 +166,13 @@
         <ul class="navbar-nav mr-auto">
             @guest
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/courses') }}">Courses</a>
+                    <a class="nav-link" href="{{ url('/courses') }}">{{ __('navbar.courses') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('/') }}">About us</a>
+                    <a class="nav-link" href="{{ url('/') }}">{{ __('navbar.about_us') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contact us</a>
+                    <a class="nav-link" href="{{ route('contact') }}">{{ __('navbar.contact_us') }}</a>
                 </li>
             @else
             <!-- some links  -->
@@ -98,15 +182,15 @@
         <ul class="navbar-nav ml-auto nav-flex-icons">
             @guest
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="{{ route('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link waves-effect waves-light" href="{{ route('login') }}">{{ __('navbar.login') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="{{ route('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link waves-effect waves-light" href="{{ route('register') }}">{{ __('navbar.register') }}</a>
                 </li>
 
             @else
                 <li class="nav-item">
-                    <a class="nav-link waves-effect waves-light" href="{{ route('myCourses') }}">My courses</a>
+                    <a class="nav-link waves-effect waves-light" href="{{ route('myCourses') }}">{{ __('navbar.my_courses') }}</a>
                 </li>
                 <li class="nav-item avatar dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-55" data-toggle="dropdown"
@@ -118,11 +202,10 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-info"
                          aria-labelledby="navbarDropdownMenuLink-55">
-                        <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i> My
-                            account</a>
-                        <a class="dropdown-item" href="{{ url('account/setting') }}"><i class="fas fa-cog"></i> Setting</a>
+                        <a class="dropdown-item" href="{{ url('account/details') }}"><i class="fas fa-user"></i>{{ __('navbar.my_account') }}</a>
+                        <a class="dropdown-item" href="{{ url('account/setting') }}"><i class="fas fa-cog"></i> {{ __('navbar.setting') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}"><i
-                                    class="fas fa-sign-out-alt"></i> {{ __('Logout') }}</a>
+                                    class="fas fa-sign-out-alt"></i> {{ __('navbar.logout') }}</a>
                     </div>
                 </li>
             @endguest
@@ -292,13 +375,14 @@
     <!-- Copyright -->
 
 </footer>
-<script defer type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/popper.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script defer type="text/javascript" src="{{ asset('js/mdb.min.js') }}"></script>
 @yield('scripts')
 <script defer>
     $(document).ready(function () {
+        $('.preloader').hide();
         @if(Session::has('success'))
             toastr.success('{{ Session::get('success') }}');
         @endif

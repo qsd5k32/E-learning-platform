@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Mail\EnrollMail;
 use Illuminate\Support\Facades\Mail;
 use Auth;
+use Illuminate\Support\Facades\App;
 
 class HomeController extends Controller
 {

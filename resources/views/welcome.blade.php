@@ -51,7 +51,7 @@
 
                                     <div class="md-form">
                                         <i class="fas fa-user prefix"></i>
-                                        <input type="text" id="username" required class="form-control" name="username"
+                                        <input type="text" id="username" required class="form-control" autocomplete="username" name="username"
                                                value="{{ old('username') }}">
                                         <label for="username">Username</label>
                                         @if ($errors->has('username'))
@@ -88,7 +88,7 @@
                                         <i class="fas fa-lock prefix"></i>
                                         <input type="password" id="password"
                                                class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                               name="password" required>
+                                               name="password" required autocomplete="new-password">
                                         <label for="password">{{ __('Password') }}</label>
                                         @if ($errors->has('password'))
                                             <div class="invalid-feedback">
@@ -101,7 +101,7 @@
                                         <i class="fas fa-lock prefix"></i>
                                         <input type="password" id="password-confirm"
                                                class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}"
-                                               name="password_confirmation" required>
+                                               name="password_confirmation" required autocomplete="new-password">
                                         <label for="password-confirm">{{ __('Confirm Password') }}</label>
 
                                     </div>
