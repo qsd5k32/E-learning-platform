@@ -10,6 +10,7 @@
     <link rel='canonical' href='{{ url('/') }}'>
     <meta name='mobile-web-app-capable' content='yes'>
     <meta name='apple-mobile-web-app-capable' content='yes'>
+    <link rel="icon" href="{{ asset('img/favicon.ico') }}">
     <meta name='application-name' content='{{ config('app.name') }}'>
     <meta name='apple-mobile-web-app-status-bar-style' content='black'>
     <meta name="csrf-token" content="{{ csrf_token() }}">

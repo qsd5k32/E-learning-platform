@@ -31,7 +31,7 @@ class EnrollMail extends Mailable
      */
     public function build()
     {
-        return $this->from('sed75dik@gmail.com')
+        return $this
             ->subject('you enrolled new course in axeLearn')
             ->markdown('emails.enroll',
                 ['message' => $this->message , 'course_id' => $this->course_id]);
